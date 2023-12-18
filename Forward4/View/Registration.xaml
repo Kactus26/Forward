@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Forward4.View.Registration">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="logo.png"/>
+
+        <Label FontFamily="Montserrat" FontSize="26" Text="Имя" Margin="40,0,0,0" Grid.Row="1"/>
+        <Border Grid.Row="1" Margin="25, 44" Stroke="#FF7B14" StrokeThickness="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="10, 14" Radius="50" Opacity="1"/>
+            </Border.Shadow>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="1"/>
+        </Border>
+
+        <Label FontFamily="Montserrat" FontSize="26" Text="Пароль" Margin="40,0,0,0" Grid.Row="2"/>
+        <Border Grid.Row="2" Margin="25, 44" Stroke="#00C19C" StrokeThickness="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="10, 14" Radius="50" Opacity="1"/>
+            </Border.Shadow>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="2"/>
+        </Border>
+
+        <Label FontFamily="Montserrat" FontSize="26" Text="Повторить пароль" Margin="40,0,0,0" Grid.Row="3"/>
+        <Border Grid.Row="3" Margin="25, 44" Stroke="#00C19C" StrokeThickness="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="10, 14" Radius="50" Opacity="1"/>
+            </Border.Shadow>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="3"/>
+        </Border>
+
+        <Button Grid.Row="4" Text="Зарегистрироваться" CornerRadius="35"  FontSize="27"
+            TextColor="white" BorderColor="Transparent" FontFamily="Montserrat"
+            Background="#85A84C" Margin="25, -20, 25, 50" VerticalOptions="Center" Clicked="OnCounterClicked">
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="10,14" Radius="20" Opacity="0.8"/>  
+            </Button.Shadow>
+        </Button>
+        
+        <Polygon ZIndex="-1" Grid.RowSpan="6" Stroke="Transparent" StrokeThickness="1" Fill="#262521">
+            <Polygon.Points>
+                <Point X="-50" Y="-50"/>
+                <Point X="450" Y="-50"/>
+                <Point X="450" Y="300"/>
+                <Point X="-50" Y="800"/>
+            </Polygon.Points>
+        </Polygon>
+    </Grid>
+</ContentPage>

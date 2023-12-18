@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Forward4.View.Entrance"
+             xmlns:vm="clr-namespace:Forward4.ViewModel"
+             x:DataType="vm:EntranceViewModel" Background="#2F2E2A">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.9*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="1.1*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="1" Source="logo.png"/>
+
+        <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" FontSize="85" FontFamily="Quicksand" TextColor="White" Text="Forward"/>
+        <Label Grid.Row="5" Text="Добро пожаловать!" HorizontalOptions="Center" VerticalOptions="Center"  FontFamily="Montserrat" FontSize="31" TextColor="White"/>
+
+        <Button Grid.Row="7" Text="Зарегистрироваться" CornerRadius="35"  FontSize="27"
+                    TextColor="white" BorderColor="Transparent" FontFamily="Montserrat"
+                    Background="#85A84C" Margin="30,2" Command="{Binding NewTextCommand}">
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="10,14" Radius="20" Opacity="0.6"/>
+            </Button.Shadow>
+        </Button>
+
+        <Button Grid.Row="9" Text="Войти" FontSize="27" TextColor="white" 
+                    Background="#2F2E2A" CornerRadius="35"  BorderColor="#46A344" BorderWidth="2"
+                    Margin="30, 2" FontFamily="Montserrat">
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="10,14" Radius="20" Opacity="0.6"/>
+            </Button.Shadow>
+        </Button>
+
+        <Polygon ZIndex="-1" Grid.RowSpan="11" Stroke="Transparent" StrokeThickness="1" Fill="#262521">
+            <Polygon.Points>
+                <Point X="-50" Y="-50"/>
+                <Point X="450" Y="-50"/>
+                <Point X="450" Y="300"/>
+                <Point X="-50" Y="800"/>
+            </Polygon.Points>
+        </Polygon>
+    </Grid>
+
+</ContentPage>
