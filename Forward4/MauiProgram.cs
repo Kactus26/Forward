@@ -23,18 +23,12 @@ namespace Forward4
                 });
 
             builder.Services.AddSingleton<NavigationService>();
-            builder.Services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=C:\\Users\\sasha\\source\\repos\\Forward4\\Forward4\\bin\\Debug\\net8.0-android\\helloapp.db"));
-
+/*            builder.Services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=C:\\Users\\sasha\\source\\repos\\Forward4\\Forward4\\bin\\Debug\\net8.0-android\\helloapp.db"));
+*/
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            var serviceProvider = builder.Services.BuildServiceProvider();
-
-            var dataContext = serviceProvider.GetRequiredService<DataContext>();
-
-            Singletone.AddContext(dataContext);
-
             return builder.Build();
         }
     }
