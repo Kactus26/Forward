@@ -9,9 +9,5 @@ namespace Forward4.View
         {
             InitializeComponent();
         }
-        private async void OnCounterClicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Forward4.View.Login" Background="#2F2E2A">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="logo.png"/>
+
+        <Label FontFamily="Montserrat" FontSize="26" Text="Имя" Margin="45,0,0,0" Grid.Row="2"/>
+        <Border Grid.Row="2" Margin="25, 48, 25, 80" Stroke="#FF7B14" StrokeThickness="2" Background="#262521">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
+            </Border.Shadow>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="1"/>
+        </Border>
+
+        <Label FontFamily="Montserrat" FontSize="26" Text="Пароль" Margin="50,-30,0,0" Grid.Row="3"/>
+        <Border Grid.Row="3" Margin="25, 15, 25, 110" Stroke="#00CAD7" StrokeThickness="2" Background="#262521">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
+            </Border.Shadow>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="1"/>
+        </Border>
+
+        <Button Grid.Row="4" Text="Войти" CornerRadius="35"  FontSize="27"
+            TextColor="white" BorderColor="Transparent" FontFamily="Montserrat"
+            Background="#85A84C" Margin="25, 60, 25, 70">
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="8,10" Radius="10" Opacity="0.8"/>
+            </Button.Shadow>
+        </Button>
+
+        <Polygon ZIndex="-1" Grid.RowSpan="6" Stroke="Transparent" StrokeThickness="1" Fill="#262521">
+            <Polygon.Points>
+                <Point X="-50" Y="-50"/>
+                <Point X="450" Y="-50"/>
+                <Point X="450" Y="300"/>
+                <Point X="-50" Y="800"/>
+            </Polygon.Points>
+        </Polygon>
+    </Grid>
+</ContentPage>
