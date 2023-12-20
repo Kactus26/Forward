@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Forward4.Data
 {
-    static public class Seed
+    /*static public class Seed
     {
         static async public void Seeding(DataContext dataContext)
         {
@@ -17,5 +17,5 @@ namespace Forward4.Data
             };
             await dataContext.SaveChangesAsync();
         }
-    }
+    }*/
 }

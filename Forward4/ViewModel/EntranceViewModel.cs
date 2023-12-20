@@ -14,14 +14,22 @@ namespace Forward4.ViewModel
 {
     public partial class EntranceViewModel : ObservableObject
     {
-        DataContext dataContext { get; set; }
+        private DataContext _context;
+        
         [ObservableProperty]
         private string text;
+
+        public EntranceViewModel(DataContext db)
+        {
+            _context = db;
+        }
 
         [RelayCommand]
         public async Task YuraDoebalsya()
         {
-            text = dataContext.Users.FirstOrDefault()?.Name;
+            await _context.Add("Sasha");
+            var a = await _context.Read();
+            Text = a.Name;
         }
 
 
@@ -34,12 +42,6 @@ namespace Forward4.ViewModel
         public async Task ToLoginPage()
         {
             await NavigationService.GetNavigation().PushAsync(new Login(), true);
-        }
-
-        public EntranceViewModel()
-        {
-            var dataContext = Singletone.GetContext();
-            this.dataContext = dataContext;
         }
     }
 }
