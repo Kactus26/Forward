@@ -1,4 +1,5 @@
 using Forward4.Data;
+using Forward4.ViewModel;
 
 namespace Forward4.View
 {
@@ -8,6 +9,8 @@ namespace Forward4.View
         public Registration()
         {
             InitializeComponent();
+            BindingContext = new RegistrationViewModel(new DataContext());
+
         }
     }
 }

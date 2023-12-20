@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Forward4.ViewModel"
+             x:DataType="vm:RegistrationViewModel"
              x:Class="Forward4.View.Registration" Background="#2F2E2A">
 
     <Grid>
@@ -22,7 +24,7 @@
             <Border.Shadow>
                 <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
             </Border.Shadow>
-            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="1"/>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="1" Text="{Binding Name}"/>
         </Border>
 
         <Label FontFamily="Montserrat" FontSize="26" Text="Пароль" Margin="50,0,0,0" Grid.Row="2"/>
@@ -33,7 +35,7 @@
             <Border.Shadow>
                 <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
             </Border.Shadow>
-            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="2"/>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="2" Text="{Binding Password}" IsPassword="True"/>
         </Border>
 
         <Label FontFamily="Montserrat" FontSize="26" Text="Повторить пароль" Margin="50,0,0,0" Grid.Row="3"/>
@@ -44,12 +46,13 @@
             <Border.Shadow>
                 <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
             </Border.Shadow>
-            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="3"/>
+            <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="3" Text="{Binding CheckPassword}" IsPassword="True"/>
         </Border>
 
+        <Label Grid.Row="4" Text="{Binding ErrorMessage}" TextColor="Red" HorizontalOptions="Center" Margin="0,-25,0,0"  FontSize="14"/>
         <Button Grid.Row="4" Text="Зарегистрироваться" CornerRadius="35"  FontSize="27"
             TextColor="white" BorderColor="Transparent" FontFamily="Montserrat"
-            Background="#85A84C" Margin="30, 20, 30, 60">
+            Background="#85A84C" Margin="30, 20, 30, 60" Command="{Binding RegisterCommand}">
             <Button.Shadow>
                 <Shadow Brush="Black" Offset="8,10" Radius="10" Opacity="0.8"/>  
             </Button.Shadow>

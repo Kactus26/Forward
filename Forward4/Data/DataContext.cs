@@ -18,17 +18,29 @@ namespace Forward4.Data
             _context = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, dbName));
             _context.CreateTableAsync<User>();
         }
-        public async Task Add(string name)
+        public async Task RegisterUser(string name, string password)
         {
             User user = new User()
             {
-                Name = name
+                Name = name, Password = password 
             };
             await _context.InsertAsync(user);
         }
-        public async Task<User> Read()
+        public async Task<ICollection<User>> GetUsers()
         {
-            return await _context.Table<User>().FirstOrDefaultAsync();
+            return await _context.Table<User>().ToListAsync();
+        }
+        public async Task<User> GetUserByName(string name) 
+        {
+            return await _context.Table<User>().FirstOrDefaultAsync(x => x.Name == name);
+        }
+
+        public async Task<bool> CheckUsersExists(string name)
+        {
+            if (await _context.Table<User>().FirstOrDefaultAsync(x => x.Name == name) != null)
+                return true;
+            else
+                return false;
         }
     }
 }

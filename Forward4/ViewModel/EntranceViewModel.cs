@@ -14,25 +14,6 @@ namespace Forward4.ViewModel
 {
     public partial class EntranceViewModel : ObservableObject
     {
-        private DataContext _context;
-        
-        [ObservableProperty]
-        private string text;
-
-        public EntranceViewModel(DataContext db)
-        {
-            _context = db;
-        }
-
-        [RelayCommand]
-        public async Task YuraDoebalsya()
-        {
-            await _context.Add("Sasha");
-            var a = await _context.Read();
-            Text = a.Name;
-        }
-
-
         [RelayCommand]
         public async Task ToRegistrationPage()
         {

@@ -1,4 +1,5 @@
 ﻿using Forward4.Data;
+using Forward4.Model;
 using Forward4.View;
 using Forward4.ViewModel;
 using Microsoft.EntityFrameworkCore;
@@ -24,16 +25,18 @@ namespace Forward4
 
             builder.Services.AddSingleton<NavigationService>();
             builder.Services.AddSingleton<DataContext>();
+            builder.Services.AddSingleton<ActiveUser>();
+
 
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            var serviceProvider = builder.Services.BuildServiceProvider();
+/*            var serviceProvider = builder.Services.BuildServiceProvider();
 
             var dataContext = serviceProvider.GetRequiredService<DataContext>();
 
-            Singletone.AddContext(dataContext);
+            Singletone.AddContext(dataContext);*/
 
             return builder.Build();
         }

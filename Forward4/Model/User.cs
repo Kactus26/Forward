@@ -12,5 +12,6 @@ namespace Forward4.Model
         [Key]
         public int id { get; set; }
         public string Name { get; set; }
+        public string Password { get; set; }
     }
 }

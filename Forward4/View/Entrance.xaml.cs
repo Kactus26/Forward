@@ -10,7 +10,7 @@ namespace Forward4.View
         {
             InitializeComponent();
 
-            BindingContext = new EntranceViewModel(new DataContext());
+            BindingContext = new EntranceViewModel();
             NavigationService.AddNavigation(Navigation);
         }
     }
