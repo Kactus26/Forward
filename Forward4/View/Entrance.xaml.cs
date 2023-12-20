@@ -1,5 +1,6 @@
 ﻿using Forward4.Data;
 using Forward4.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Forward4.View
 {
@@ -8,14 +9,9 @@ namespace Forward4.View
         public Entrance()
         {
             InitializeComponent();
+
             BindingContext = new EntranceViewModel();
             NavigationService.AddNavigation(Navigation);
         }
-
-        private async void OnCounterClicked(object sender, EventArgs e)
-        {
-            await Singletone.GetNavigation().PushAsync(new Registration(), true);
-        }
     }
-
 }

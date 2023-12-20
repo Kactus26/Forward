@@ -22,22 +22,22 @@
 
         <Image Grid.Row="1" Source="logo.png"/>
 
-        <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" FontSize="85" FontFamily="Quicksand" TextColor="White" Text="Forward"/>
+        <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" FontSize="85" FontFamily="Quicksand" TextColor="White" Text="{Binding Text}"/>
         <Label Grid.Row="5" Text="Добро пожаловать!" HorizontalOptions="Center" VerticalOptions="Center"  FontFamily="Montserrat" FontSize="31" TextColor="White"/>
 
         <Button Grid.Row="7" Text="Зарегистрироваться" CornerRadius="35"  FontSize="27"
                     TextColor="white" BorderColor="Transparent" FontFamily="Montserrat"
-                    Background="#85A84C" Margin="30,2" Command="{Binding NewTextCommand}">
+                    Background="#85A84C" Margin="30,2" Command="{Binding YuraDoebalsyaCommand}">
             <Button.Shadow>
-                <Shadow Brush="Black" Offset="10,14" Radius="20" Opacity="0.6"/>
+                <Shadow Brush="Black" Offset="8,10" Radius="10" Opacity="0.6"/>
             </Button.Shadow>
         </Button>
 
         <Button Grid.Row="9" Text="Войти" FontSize="27" TextColor="white" 
                     Background="#2F2E2A" CornerRadius="35"  BorderColor="#46A344" BorderWidth="2"
-                    Margin="30, 2" FontFamily="Montserrat">
+                    Margin="30, 2" FontFamily="Montserrat" Command="{Binding ToLoginPageCommand}">
             <Button.Shadow>
-                <Shadow Brush="Black" Offset="10,14" Radius="20" Opacity="0.6"/>
+                <Shadow Brush="Black" Offset="8,10" Radius="10" Opacity="0.6"/>
             </Button.Shadow>
         </Button>
 

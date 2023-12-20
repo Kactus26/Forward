@@ -9,7 +9,7 @@ namespace Forward4.Data
     class Singletone
     {
         private static Singletone _singletone;
-        public static INavigation _navigation;
+        public static DataContext _context;
         private Singletone()
         {
     
@@ -24,14 +24,14 @@ namespace Forward4.Data
             return _singletone;
         }
 
-        public static INavigation GetNavigation()
+        public static DataContext GetContext()
         { 
-            return _navigation;
+            return _context;
         }
 
-        public static void AddNavigation(INavigation navigation)
+        public static void AddContext(DataContext context)
         {
-            _navigation = navigation;
+            _context = context;
         }
     }
 }
