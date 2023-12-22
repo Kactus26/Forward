@@ -28,8 +28,8 @@ namespace Forward4.ViewModel
                 User user = await _context.GetUserByName(Name);
                 if (Password == user.Password)
                 {
-/*                    new ActiveUser(user);
-*/                    await NavigationService.GetNavigation().PushAsync(new Main(), true);
+                    await _context.NewActiveUser(user.Id);                    
+                    await NavigationService.GetNavigation().PushAsync(new Main(), true);
                 }
                 else ErrorMessage = "Пароль не верен";
 

@@ -25,7 +25,6 @@ namespace Forward4
 
             builder.Services.AddSingleton<NavigationService>();
             builder.Services.AddSingleton<DataContext>();
-            builder.Services.AddSingleton<ActiveUser>();
 
 
 

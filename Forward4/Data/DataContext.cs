@@ -16,20 +16,60 @@ namespace Forward4.Data
         public DataContext()
         {
             _context = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, dbName));
-            _context.CreateTableAsync<User>();
+            Init();
         }
-        public async Task RegisterUser(string name, string password)
+
+        public async Task Init()
         {
-            User user = new User()
+            await _context.CreateTableAsync<User>();
+            await _context.CreateTableAsync<Active>();
+            int seed = await _context.Table<User>().CountAsync();
+            if (seed == 0)
             {
-                Name = name, Password = password 
-            };
+                User admin = new User { Id = 0, Name = "Kactus", Password = "111" };
+                await _context.InsertAsync(admin);
+            }
+        }
+
+        public async Task<int> NewId()
+        {
+            List<User> list = await _context.Table<User>().OrderByDescending(x => x.Id).ToListAsync();
+            return ++list[0].Id;
+        }
+
+        public async Task NewActiveUser(int userId)
+        {
+            await _context.DeleteAllAsync<Active>();
+            Active actUser = new Active { UserId = userId };
+            await _context.InsertAsync(actUser);
+        }
+
+        public async Task DeleteAll()
+        {
+            await _context.DeleteAllAsync<User>();
+            await _context.DeleteAllAsync<Active>();
+        }
+
+        public async Task<Active> GetActiveUser()
+        {
+            return await _context.Table<Active>().FirstAsync();
+        }
+
+        public async Task RegisterUser(User user)
+        {
             await _context.InsertAsync(user);
         }
+
         public async Task<ICollection<User>> GetUsers()
         {
             return await _context.Table<User>().ToListAsync();
         }
+
+        public async Task<User> GetUserById(int id)
+        {
+            return await _context.Table<User>().FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<User> GetUserByName(string name) 
         {
             return await _context.Table<User>().FirstOrDefaultAsync(x => x.Name == name);

@@ -45,9 +45,11 @@ namespace Forward4.ViewModel
                 ErrorMessage = "Пароли не совпадают";
                 return;
             }
-            await _context.RegisterUser(Name, Password);
-/*            new ActiveUser(new User { Name = Name, Password = Password });
-*/            await NavigationService.GetNavigation().PushAsync(new Main(), true);
+            int NewId = await _context.NewId();
+            User user = new User { Id = NewId, Name = Name, Password = Password };
+            await _context.NewActiveUser(NewId);
+            await _context.RegisterUser(user);
+            await NavigationService.GetNavigation().PushAsync(new Main(), true);
         }
 
         private DataContext _context;
