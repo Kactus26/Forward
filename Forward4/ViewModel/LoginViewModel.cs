@@ -36,10 +36,17 @@ namespace Forward4.ViewModel
             } else ErrorMessage = "Пользователя с таким именем не существует";
         }
 
+        public async Task LoggedAlredyCheck()
+        {
+            if (await _context.CheckActiveUserExists())
+                await NavigationService.GetNavigation().PushAsync(new Main(), true);
+        }
+
         private DataContext _context;
         public LoginViewModel(DataContext db)
         {
             _context = db;
+            LoggedAlredyCheck(); 
         }
     }
 }

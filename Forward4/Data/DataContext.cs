@@ -75,6 +75,15 @@ namespace Forward4.Data
             return await _context.Table<User>().FirstOrDefaultAsync(x => x.Name == name);
         }
 
+        public async Task<bool> CheckActiveUserExists()
+        {
+            bool condition = await _context.Table<Active>().CountAsync() != 0;
+            if (await _context.Table<Active>().CountAsync() != 0)
+                return true;
+            else
+                return false;
+        }
+
         public async Task<bool> CheckUsersExists(string name)
         {
             if (await _context.Table<User>().FirstOrDefaultAsync(x => x.Name == name) != null)
