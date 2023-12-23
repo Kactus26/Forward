@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Forward4.View.Entrance"
              xmlns:vm="clr-namespace:Forward4.ViewModel"
-             x:DataType="vm:EntranceViewModel" Background="#2F2E2A">
+             x:DataType="vm:EntranceViewModel" Background="#2F2E2A"
+             Shell.TabBarIsVisible="False">
 
     <Grid>
         <Grid.RowDefinitions>

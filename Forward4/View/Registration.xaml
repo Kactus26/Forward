@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Forward4.ViewModel"
              x:DataType="vm:RegistrationViewModel"
-             x:Class="Forward4.View.Registration" Background="#2F2E2A">
-
+             x:Class="Forward4.View.Registration" Background="#2F2E2A"
+             Shell.TabBarIsVisible="False">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
