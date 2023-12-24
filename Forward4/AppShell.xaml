@@ -13,8 +13,8 @@
                   Text="Forward"
                   FontFamily="Quicksand"
                   TextColor="White"
-                  Margin="40,-10,0,0"
-                  FontSize="45"/>
+                  Margin="45,-8,0,0"
+                  FontSize="42"/>
         </HorizontalStackLayout>
     </Shell.TitleView>
     
