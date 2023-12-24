@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Forward4.ViewModel"
+             x:DataType="vm:ProfileViewModel"
+             x:Class="Forward4.View.Profile" Background="#2F2E2A"
+             Title="Profile">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+            Text="Forward"
+            FontFamily="Quicksand"
+            TextColor="White"
+            Margin="96,-10,0,0"
+            FontSize="45"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame BackgroundColor="#45443D" BorderColor="Transparent">
+            <Image Source="logo"/>
+        </Frame>
+        <Label Text="{Binding UserName}" VerticalOptions="Start" FontSize="38" Margin="0,13,0,0"  FontFamily="Montserrat" HorizontalOptions="Center" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

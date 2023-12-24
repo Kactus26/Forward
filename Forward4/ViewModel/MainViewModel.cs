@@ -17,9 +17,7 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public async void Test()
         {
-            var lol = await _context.GetActiveUser();
-            var test = await _context.GetUserById(lol.UserId);
-            Text = test.Name;
+            
         }
 
         private DataContext _context;

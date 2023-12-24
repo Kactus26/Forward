@@ -5,20 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Forward4.View"
     Shell.FlyoutBehavior="Disabled"
-    Title="Forward4" Shell.NavBarIsVisible="False">
+    Title="Forward4" Shell.BackgroundColor="#262521" TabBarBackgroundColor="#262521">
 
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+                  Text="Forward"
+                  FontFamily="Quicksand"
+                  TextColor="White"
+                  Margin="40,-10,0,0"
+                  FontSize="45"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+    
     <TabBar>
         <Tab Title="Уроки">
             <ShellContent ContentTemplate="{DataTemplate local:Entrance}"/>
         </Tab>
         <Tab Title="Задания">
-            <ShellContent ContentTemplate="{DataTemplate local:Registration}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Tasks}" />
         </Tab>
         <Tab Title="Словарь">
-            <ShellContent ContentTemplate="{DataTemplate local:Login}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Vocabulary}" />
         </Tab>
         <Tab Title="Профиль">
-            <ShellContent ContentTemplate="{DataTemplate local:Login}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
         </Tab>
     </TabBar>
 

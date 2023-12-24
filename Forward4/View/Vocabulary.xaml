@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Forward4.View.Vocabulary" Background="#2F2E2A"
+             Title="Vocabulary">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+            Text="Forward"
+            FontFamily="Quicksand"
+            TextColor="White"
+            Margin="96,-10,0,0"
+            FontSize="45"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <VerticalStackLayout>
+        <ListView/>
+    </VerticalStackLayout>
+</ContentPage>

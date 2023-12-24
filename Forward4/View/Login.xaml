@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:Forward4.ViewModel"
              x:DataType="vm:LoginViewModel"
              x:Class="Forward4.View.Login" Background="#2F2E2A"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False" Shell.NavBarIsVisible="False">
 
     <Grid>
         <Grid.RowDefinitions>

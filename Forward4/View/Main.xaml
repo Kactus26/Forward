@@ -3,12 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Forward4.ViewModel"
              x:DataType="vm:MainViewModel"
-             x:Class="Forward4.View.Main">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Text}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Command="{Binding TestCommand}"/>
-    </VerticalStackLayout>
+             x:Class="Forward4.View.Main" Background="#2F2E2A">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.13*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="logo.png" Grid.RowSpan="2" Grid.Column="0" Grid.Row="1"/>
+        <Label Text="Следующий урок" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,-8" VerticalOptions="End" Grid.Column="1" Grid.Row="1"/>
+        <Label Text="Продолжение текущего курса" FontFamily="Montserrat" Margin="0,15,0,0" VerticalOptions="Start" TextColor="#B8B7B3" FontSize="18" Grid.Column="1" Grid.Row="2"/>
+
+        <Image Source="logo.png" Grid.RowSpan="2" Grid.Column="0" Grid.Row="3"/>
+        <Label Text="Уроки курса"  FontFamily="Montserrat" VerticalOptions="End" Margin="0,0,0,7" FontSize="25" Grid.Column="1" Grid.Row="3"/>
+        <Label Text="Все уроки текущего курса" FontFamily="Montserrat" Margin="0,2,0,0" VerticalOptions="Start" TextColor="#B8B7B3" FontSize="18" Grid.Column="1" Grid.Row="4"/>
+
+        <Image Source="logo.png" Grid.RowSpan="2" Grid.Column="0" Grid.Row="5"/>
+        <Label Text="Ваши курсы" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,7" VerticalOptions="End" Grid.Column="1" Grid.Row="5"/>
+        <Label Text="Открыть все сохранённые курсы" FontFamily="Montserrat" Margin="0,0,0,0" VerticalOptions="Start" TextColor="#B8B7B3" FontSize="18" Grid.Column="1" Grid.Row="6"/>
+
+        <Image Source="logo.png" Grid.RowSpan="2" Grid.Column="0" Grid.Row="7"/>
+        <Label Text="Новые курсы" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,7" VerticalOptions="End" Grid.Column="1" Grid.Row="7"/>
+        <Label Text="Откройте что-то новое"  TextColor="#B8B7B3"  VerticalOptions="Start" FontFamily="Montserrat" FontSize="18" Grid.Column="1" Grid.Row="8"/>
+
+    </Grid>
+
 </ContentPage>

@@ -50,9 +50,10 @@ namespace Forward4.Data
             await _context.DeleteAllAsync<Active>();
         }
 
-        public async Task<Active> GetActiveUser()
+        public async Task<int> GetActiveUser()
         {
-            return await _context.Table<Active>().FirstAsync();
+            Active activeUser = await _context.Table<Active>().FirstAsync();
+            return activeUser.UserId;
         }
 
         public async Task RegisterUser(User user)

@@ -1,4 +1,6 @@
-﻿namespace Forward4
+﻿using Forward4.View;
+
+namespace Forward4
 {
     public partial class App : Application
     {

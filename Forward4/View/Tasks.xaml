@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Forward4.View.Tasks" Background="#2F2E2A"
+             Title="Tasks">
+    
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+                Text="Forward"
+                FontFamily="Quicksand"
+                TextColor="White"
+                Margin="96,-10,0,0"
+                FontSize="45"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Frame CornerRadius="25" BackgroundColor="#45443D" BorderColor="Transparent" WidthRequest="185" HeightRequest="185" Grid.Row="1">
+            <Image Source="logo"/>
+        </Frame>
+
+        <Frame CornerRadius="25" BackgroundColor="#45443D" BorderColor="Transparent" WidthRequest="185" HeightRequest="185" Grid.Row="1" Grid.Column="1">
+            <Image Source="logo"/>
+        </Frame>
+
+        <Frame CornerRadius="25" BackgroundColor="#45443D" BorderColor="Transparent" WidthRequest="185" HeightRequest="185" Grid.Row="2" Grid.Column="1">
+            <Image Source="logo"/>
+        </Frame>
+
+        <Frame CornerRadius="25" BackgroundColor="#45443D" BorderColor="Transparent" WidthRequest="185" HeightRequest="185" Grid.Row="2">
+            <Image Source="logo"/>
+        </Frame>
+
+    </Grid>
+</ContentPage>
