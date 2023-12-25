@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Forward4.View"
     Shell.FlyoutBehavior="Disabled"
-    Title="Forward4" Shell.BackgroundColor="#262521" TabBarBackgroundColor="#262521">
+    Title="Forward4" BackgroundColor="#262521" TabBarBackgroundColor="#262521" TabBarTitleColor="#00CAD7"  TabBarForegroundColor="#00CAD7">
 
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill">
@@ -19,16 +19,16 @@
     </Shell.TitleView>
     
     <TabBar>
-        <Tab Title="Уроки">
+        <Tab Title="Уроки" Icon="kurses">
             <ShellContent ContentTemplate="{DataTemplate local:Entrance}"/>
         </Tab>
-        <Tab Title="Задания">
+        <Tab Title="Задания" Icon="tasks">
             <ShellContent ContentTemplate="{DataTemplate local:Tasks}" />
         </Tab>
-        <Tab Title="Словарь">
+        <Tab Title="Словарь" Icon="vocabulary">
             <ShellContent ContentTemplate="{DataTemplate local:Vocabulary}" />
         </Tab>
-        <Tab Title="Профиль">
+        <Tab Title="Профиль" Icon="profile">
             <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
         </Tab>
     </TabBar>

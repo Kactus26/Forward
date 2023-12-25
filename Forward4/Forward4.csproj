@@ -60,6 +60,10 @@
 	  <None Remove="Resources\Fonts\Montserrat-Light.ttf" />
 	  <None Remove="Resources\Fonts\Quicksand-Light.ttf" />
 	  <None Remove="Resources\Fonts\Quicksand-VariableFont_wght.ttf" />
+	  <None Remove="Resources\Images\kurses.png" />
+	  <None Remove="Resources\Images\profile.png" />
+	  <None Remove="Resources\Images\tasks.png" />
+	  <None Remove="Resources\Images\vocabulary.png" />
 	</ItemGroup>
 
 	<ItemGroup>
