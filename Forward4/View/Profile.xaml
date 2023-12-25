@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
 
         <Frame BackgroundColor="#45443D" BorderColor="Transparent">
-            <Image Source="logo"/>
+            <Image Source="user"/>
         </Frame>
         <Label Text="{Binding UserName}" VerticalOptions="Start" FontSize="38" Margin="0,13,0,0"  FontFamily="Montserrat" HorizontalOptions="Center" Grid.Row="1"/>
     </Grid>
