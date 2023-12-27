@@ -2,7 +2,6 @@
 using Forward4.Model;
 using Forward4.View;
 using Forward4.ViewModel;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

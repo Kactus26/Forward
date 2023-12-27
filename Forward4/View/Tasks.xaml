@@ -36,7 +36,7 @@
 
         <Frame CornerRadius="25" BackgroundColor="#45443D" BorderColor="Transparent" WidthRequest="185" HeightRequest="185" Grid.Row="1" Grid.Column="1">
             <Grid>
-                <Image Margin="0,-8,0,20" Source="task8"/>
+                <Image Margin="0,-8,0,20" Source="task8ю"/>
                 <Label Margin="0,0,0,-3" Text="Перевод" FontFamily="Montserrat" FontSize="21" HorizontalOptions="Center" VerticalOptions="End"/>
             </Grid>
         </Frame>

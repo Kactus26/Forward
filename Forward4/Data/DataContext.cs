@@ -1,5 +1,4 @@
 ﻿using Forward4.Model;
-using Microsoft.EntityFrameworkCore;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -23,12 +22,27 @@ namespace Forward4.Data
         {
             await _context.CreateTableAsync<User>();
             await _context.CreateTableAsync<Active>();
+            await _context.CreateTableAsync<Lessons>();
+            await _context.CreateTableAsync<Kurses>();
             int seed = await _context.Table<User>().CountAsync();
             if (seed == 0)
             {
                 User admin = new User { Id = 0, Name = "Kactus", Password = "111" };
                 await _context.InsertAsync(admin);
             }
+            seed = await _context.Table<Kurses>().CountAsync();
+            if(seed == 0)
+            {
+                Kurses testKurse = new Kurses { Author = "Kactus", Description = "Tip kurs", LessonsCount = 5, Name = "Present simple"};
+                await _context.InsertAsync(testKurse);
+                Lessons lesson = new Lessons { LessonName = "FirstLesson", BelongsToKurse = testKurse, KurseId = testKurse.Id };
+                await _context.InsertAsync(lesson);
+            }
+        }
+
+        public async Task<List<Kurses>> GetAllKurses()
+        {
+            return await _context.Table<Kurses>().ToListAsync();
         }
 
         public async Task<int> NewId()
