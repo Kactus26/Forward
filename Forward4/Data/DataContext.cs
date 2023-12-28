@@ -33,10 +33,18 @@ namespace Forward4.Data
             seed = await _context.Table<Kurses>().CountAsync();
             if(seed == 0)
             {
-                Kurses testKurse = new Kurses { Author = "Kactus", Description = "Tip kurs", LessonsCount = 5, Name = "Present simple"};
-                await _context.InsertAsync(testKurse);
-                Lessons lesson = new Lessons { LessonName = "FirstLesson", BelongsToKurse = testKurse, KurseId = testKurse.Id };
-                await _context.InsertAsync(lesson);
+                Kurses GojoKurse = new Kurses { Author = "Gojo Satoru", Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl= "kursimagegojo.jpg" };
+                Kurses MikuKurse = new Kurses { Author = "Hatsune Miku", Description = "Wxplanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
+                await _context.InsertAsync(GojoKurse);
+                await _context.InsertAsync(MikuKurse);
+                Lessons lesson1 = new Lessons { LessonName = "Concentreation", BelongsToKurse = GojoKurse, KurseId = GojoKurse.Id};
+                Lessons lesson2 = new Lessons { LessonName = "Emotions", BelongsToKurse = GojoKurse, KurseId = GojoKurse.Id };
+                await _context.InsertAsync(lesson1);
+                await _context.InsertAsync(lesson2);
+                Lessons lesson3 = new Lessons { LessonName = "Voice", BelongsToKurse = MikuKurse, KurseId = GojoKurse.Id };
+                Lessons lesson4 = new Lessons { LessonName = "Confidence", BelongsToKurse = MikuKurse, KurseId = GojoKurse.Id };
+                await _context.InsertAsync(lesson3);
+                await _context.InsertAsync(lesson4);
             }
         }
 

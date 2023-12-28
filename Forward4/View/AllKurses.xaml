@@ -4,24 +4,39 @@
              xmlns:models="clr-namespace:Forward4.Model"
              xmlns:vm="clr-namespace:Forward4.ViewModel"
              x:DataType="vm:AllKursesViewModel"
-             x:Class="Forward4.View.AllKurses"
-             Title="AllKurses">
-    <VerticalStackLayout>
+             x:Class="Forward4.View.AllKurses">
 
-        <CollectionView ItemsSource="{Binding AllKurses}">
+        <Shell.TitleView>
+            <HorizontalStackLayout VerticalOptions="Fill">
+                <Label
+                  Text="Все курсы"
+                  FontFamily="Montserrat"
+                  TextColor="White"
+                  Margin="38,0,0,0"
+                  FontSize="35"/>
+            </HorizontalStackLayout>
+        </Shell.TitleView>
+
+    <VerticalStackLayout>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding AllKurses}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Kurses">
                     <ContentView>
-                        <Label Text="{Binding Name}"/>
+                        <Grid Padding="10,20,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="6*"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding ImageUrl}" MaximumHeightRequest="200" MaximumWidthRequest="400" Background="#262521"/>
+                            <Label Text="{Binding Name}" Grid.Row="1" FontSize="25" FontFamily="Montserrat" HeightRequest="40" Background="#262521"/>
+                            <Label Text="{Binding Author}" Grid.Row="2" FontSize="20" FontFamily="Montserrat" Background="#262521"/>
+                            <Label Text="{Binding LessonsCount}" HorizontalOptions="End" Grid.Row="2" FontSize="20" FontFamily="Montserrat" Background="#262521"/>
+                        </Grid>
                     </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
-
-        <Label 
-            Text="dl;f,mldjkag"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
