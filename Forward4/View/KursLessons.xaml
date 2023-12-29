@@ -7,23 +7,45 @@
              x:Class="Forward4.View.KursLessons">
 
     <Shell.TitleView>
-        <HorizontalStackLayout VerticalOptions="Fill">
+        <HorizontalStackLayout VerticalOptions="Center">
             <Label
               Text="Уроки курса"
               FontFamily="Montserrat"
               TextColor="White"
-              Margin="38,0,0,0"
-              FontSize="35"/>
+              Margin="22,0,0,0"
+              FontSize="34"/>
         </HorizontalStackLayout>
     </Shell.TitleView>
 
     <VerticalStackLayout>
-        <Label Text="{Binding Text}" FontFamily="Montserrat" FontSize="20"/>
+        <Image Source="{Binding ImageUrl}"/>
+        <BoxView HeightRequest="2" Color="#FF7B14" Margin="30, 25, 30, 5" />
+        <Label Text="{Binding Text}" Padding="10" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Montserrat" FontSize="23"/>
+        <BoxView HeightRequest="2" Color="#CC469D" Margin="30, 5, 30, 25" />
         <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding KursLessons}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Lessons">
-                    <ContentView>
-                        <Label Text="{Binding Name}" HorizontalOptions="Center" Padding="0,6,0,0" Grid.Row="1" FontSize="23" FontFamily="Montserrat" HeightRequest="40"/>
+                    <ContentView Padding="10,0,10,20">
+                        <Border Background="#45443D" Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="25"/>
+                            </Border.StrokeShape>
+                            
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" Grid.Row="0" HorizontalOptions="Start" Padding="25,8,0,0" FontSize="23" FontFamily="Montserrat" HeightRequest="40"/>
+                                <Label Text="{Binding Description}" TextColor="#B8B7B3" Grid.Row="1" HorizontalOptions="Start" Padding=" 25,2,0,0" FontSize="19" FontFamily="Montserrat" HeightRequest="40"/>
+                                <Image Source="playsign" Margin="5" Grid.RowSpan="2" Grid.Column="1"/>
+                            </Grid>
+                        </Border>
                     </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

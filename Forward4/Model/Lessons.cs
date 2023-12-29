@@ -15,6 +15,8 @@ namespace Forward4.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+
         [ForeignKey(typeof(Kurses))]
         public int KursId { get; set; }
     }

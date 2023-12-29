@@ -16,12 +16,15 @@ namespace Forward4.ViewModel
         public string text;
         [ObservableProperty]
         public List<Lessons> kursLessons;
-
+        [ObservableProperty]
+        public string imageUrl;
 
         public void Init()
         {
             User user = _context.GetUser();
             KursLessons = _context.GetKursLessons(user.ActiveKurseId);
+            Text = user.UserKurses[user.ActiveKurseId - 1].Description;
+            ImageUrl = user.UserKurses[user.ActiveKurseId - 1].ImageUrl;
         }
 
         private DataContext _context;
