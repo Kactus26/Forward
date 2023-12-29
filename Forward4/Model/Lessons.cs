@@ -16,7 +16,7 @@ namespace Forward4.Model
         public int Id { get; set; }
         public string LessonName { get; set; }
         public int KurseId { get; set; }
-        [ManyToOne]
-        public Kurses BelongsToKurse { get; set; }
+        [ForeignKey(typeof(Kurses))]
+        public int KursId { get; set; }
     }
 }

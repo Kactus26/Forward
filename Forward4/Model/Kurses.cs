@@ -13,16 +13,14 @@ namespace Forward4.Model
     public class Kurses
     {
         [PrimaryKey, AutoIncrement]
-        public int Id {  get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Author { get; set; }
         public int LessonsCount { get; set; }
-        public string ImageUrl {  get; set; }
+        public string ImageUrl { get; set; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Lessons> Lessons { get; set; }
-        [ManyToMany(typeof(UserKurses))]
-        public List<User> BelongsToUsers { get; set; } = new List<User>();
+        [OneToMany]
+        public List<Lessons> Lessonss { get; set; }
     }
 }

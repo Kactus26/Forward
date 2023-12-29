@@ -22,7 +22,7 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public async Task ToLoginPage()
         {
-            if (await _context.CheckActiveUserExists())
+            if (_context.CheckActiveUserExists())
                 await NavigationService.GetNavigation().PushAsync(new Main(), true);
             else
                 await NavigationService.GetNavigation().PushAsync(new Login(), true);

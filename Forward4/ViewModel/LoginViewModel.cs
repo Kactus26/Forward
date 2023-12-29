@@ -23,12 +23,12 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public async void Login()
         {
-            if(await _context.CheckUsersExists(Name))
+            if(_context.CheckUsersExists(Name))
             {
-                User user = await _context.GetUserByName(Name);
+                User user = _context.GetUserByName(Name);
                 if (Password == user.Password)
                 {
-                    await _context.NewActiveUser(user.Id);                    
+                    _context.NewActiveUser(user.Id);                    
                     await NavigationService.GetNavigation().PushAsync(new Main(), true);
                 }
                 else ErrorMessage = "Пароль не верен";

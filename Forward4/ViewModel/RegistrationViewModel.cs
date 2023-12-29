@@ -30,7 +30,7 @@ namespace Forward4.ViewModel
                 ErrorMessage = "Длина имени должна быть больше 2";
                 return;
             }
-            else if (await _context.CheckUsersExists(Name))
+            else if (_context.CheckUsersExists(Name))
             {
                 ErrorMessage = "Пользователь с таким именем уже существует";
                 return;
@@ -45,10 +45,10 @@ namespace Forward4.ViewModel
                 ErrorMessage = "Пароли не совпадают";
                 return;
             }
-            int NewId = await _context.NewId();
+            int NewId = _context.NewId();
             User user = new User { Id = NewId, Name = Name, Password = Password };
-            await _context.NewActiveUser(NewId);
-            await _context.RegisterUser(user);
+            _context.NewActiveUser(NewId);
+            _context.RegisterUser(user);
             await NavigationService.GetNavigation().PushAsync(new Main(), true);
         }
 

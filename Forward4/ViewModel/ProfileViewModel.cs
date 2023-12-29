@@ -17,10 +17,10 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public string userName;
 
-        public async void GetUserName()
+        public void GetUserName()
         {
-            int ActiveUserId = await _context.GetActiveUser();
-            User user = await _context.GetUserById(ActiveUserId);
+            int ActiveUserId = _context.GetActiveUser();
+            User user = _context.GetUserById(ActiveUserId);
             UserName = user.Name;
         }
 
