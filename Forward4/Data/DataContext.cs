@@ -28,27 +28,24 @@ namespace Forward4.Data
             int seed = _context.Table<User>().Count();
             if (seed == 0)
             {
-                User admin = new User { Id = 0, Name = "Kactus", Password = "111" };
+                User admin = new User { Name = "Kactus", Password = "111" };
                 _context.Insert(admin);
-            }
-            seed = _context.Table<Kurses>().Count();
-            if (seed == 0)
-            {
-                Kurses GojoKurse = new Kurses { Author = "Gojo Satoru", Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl = "kursimagegojo.jpg" };
-                Kurses MikuKurse = new Kurses { Author = "Hatsune Miku", Description = "Wxplanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
-                _context.Insert(GojoKurse);
-                _context.Insert(MikuKurse);
-                Lessons lesson1 = new Lessons { LessonName = "Concentreation", KurseId = GojoKurse.Id };
-                Lessons lesson2 = new Lessons { LessonName = "Emotions", KurseId = GojoKurse.Id };
+                Kurses gojoKurse = new Kurses { Author = "Gojo Satoru", UserId = admin.Id, Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl = "kursimagegojo.jpg" };
+                Kurses mikuKurse = new Kurses { Author = "Hatsune Miku", UserId = admin.Id, Description = "Explanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
+                _context.Insert(gojoKurse);
+                _context.Insert(mikuKurse);
+                Lessons lesson1 = new Lessons { LessonName = "Concentreation", KursId = gojoKurse.Id };
+                Lessons lesson2 = new Lessons { LessonName = "Emotions", KursId = gojoKurse.Id };
                 _context.Insert(lesson1);
                 _context.Insert(lesson2);
-                Lessons lesson3 = new Lessons { LessonName = "Voice", KurseId = GojoKurse.Id };
-                Lessons lesson4 = new Lessons { LessonName = "Confidence", KurseId = GojoKurse.Id };
+                Lessons lesson3 = new Lessons { LessonName = "Voice", KursId = mikuKurse.Id };
+                Lessons lesson4 = new Lessons { LessonName = "Confidence", KursId = mikuKurse.Id };
                 _context.Insert(lesson3);
                 _context.Insert(lesson4);
-                GojoKurse.Lessonss = new List<Lessons> { lesson1, lesson2 };
-                _context.UpdateWithChildren(GojoKurse);
-                var a = _context.GetWithChildren<Kurses>(GojoKurse.Id);
+                gojoKurse.Lessonss = new List<Lessons> { lesson1, lesson2 };
+                _context.UpdateWithChildren(gojoKurse);
+                admin.UserKurses = new List<Kurses> { gojoKurse, mikuKurse };
+                _context.UpdateWithChildren(admin);
             }
         }
 
@@ -57,11 +54,11 @@ namespace Forward4.Data
             return _context.Table<Kurses>().ToList();
         }
 
-        public int NewId()
+/*        public int NewId()
         {
             List<User> list = _context.Table<User>().OrderByDescending(x => x.Id).ToList();
             return ++list[0].Id;
-        }
+        }*/
 
         public void NewActiveUser(int userId)
         {

@@ -3,7 +3,6 @@ using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,5 +21,7 @@ namespace Forward4.Model
 
         [OneToMany]
         public List<Lessons> Lessonss { get; set; }
+        [ForeignKey(typeof(User))]
+        public int UserId { get; set; }
     }
 }
