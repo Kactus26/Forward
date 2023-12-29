@@ -28,37 +28,60 @@ namespace Forward4.Data
             int seed = _context.Table<User>().Count();
             if (seed == 0)
             {
-                User admin = new User { Name = "Kactus", Password = "111" };
+                User admin = new User { Name = "Kactus", Password = "111", ActiveKurseId = 1 };
                 _context.Insert(admin);
                 Kurses gojoKurse = new Kurses { Author = "Gojo Satoru", UserId = admin.Id, Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl = "kursimagegojo.jpg" };
                 Kurses mikuKurse = new Kurses { Author = "Hatsune Miku", UserId = admin.Id, Description = "Explanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
                 _context.Insert(gojoKurse);
                 _context.Insert(mikuKurse);
-                Lessons lesson1 = new Lessons { LessonName = "Concentreation", KursId = gojoKurse.Id };
-                Lessons lesson2 = new Lessons { LessonName = "Emotions", KursId = gojoKurse.Id };
+                Lessons lesson1 = new Lessons { Name = "Concentreation", KursId = gojoKurse.Id };
+                Lessons lesson2 = new Lessons { Name = "Emotions", KursId = gojoKurse.Id };
                 _context.Insert(lesson1);
                 _context.Insert(lesson2);
-                Lessons lesson3 = new Lessons { LessonName = "Voice", KursId = mikuKurse.Id };
-                Lessons lesson4 = new Lessons { LessonName = "Confidence", KursId = mikuKurse.Id };
+                Lessons lesson3 = new Lessons { Name = "Voice", KursId = mikuKurse.Id };
+                Lessons lesson4 = new Lessons { Name = "Confidence", KursId = mikuKurse.Id };
                 _context.Insert(lesson3);
                 _context.Insert(lesson4);
-                gojoKurse.Lessonss = new List<Lessons> { lesson1, lesson2 };
+                gojoKurse.Lessons = new List<Lessons> { lesson1, lesson2 };
                 _context.UpdateWithChildren(gojoKurse);
-                admin.UserKurses = new List<Kurses> { gojoKurse, mikuKurse };
+                admin.UserKurses = new List<Kurses> { gojoKurse };
                 _context.UpdateWithChildren(admin);
             }
+        }
+
+        public void AddKursToUser(Kurses selectedKurs, int userId)
+        {
+            User user = _context.GetWithChildren<User>(userId);
+            Kurses test = user.UserKurses.FirstOrDefault(x => x.Id == selectedKurs.Id);
+            if (test == null)
+            {
+                user.UserKurses.Add(selectedKurs);
+                user.ActiveKurseId = selectedKurs.Id;
+                _context.UpdateWithChildren(user);
+            }
+            else
+            {
+                user.ActiveKurseId = selectedKurs.Id;
+                _context.Update(user);
+            }
+        }
+
+        public List<Lessons> GetKursLessons(int activeKursId)
+        {
+            Kurses kurs = _context.GetWithChildren<Kurses>(activeKursId);
+            return kurs.Lessons;
+        }
+
+        public User GetUser()
+        {
+            int userId = GetActiveUser();
+            return _context.GetWithChildren<User>(userId);
         }
 
         public List<Kurses> GetAllKurses()
         {
             return _context.Table<Kurses>().ToList();
         }
-
-/*        public int NewId()
-        {
-            List<User> list = _context.Table<User>().OrderByDescending(x => x.Id).ToList();
-            return ++list[0].Id;
-        }*/
 
         public void NewActiveUser(int userId)
         {

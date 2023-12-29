@@ -16,5 +16,6 @@ namespace Forward4.Model
         public string Password { get; set; }
         [OneToMany]
         public List<Kurses> UserKurses { get; set; }
+        public int ActiveKurseId { get; set; }
     }
 }

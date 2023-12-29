@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Forward4.View.KursLessons"
-             Title="KursLessons">
+             xmlns:models="clr-namespace:Forward4.Model"
+             xmlns:vm="clr-namespace:Forward4.ViewModel"
+             x:DataType="vm:KursLessonsViewModel"
+             x:Class="Forward4.View.KursLessons">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+              Text="Уроки курса"
+              FontFamily="Montserrat"
+              TextColor="White"
+              Margin="38,0,0,0"
+              FontSize="35"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Kurs Lessons"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="{Binding Text}" FontFamily="Montserrat" FontSize="20"/>
+        <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding KursLessons}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Lessons">
+                    <ContentView>
+                        <Label Text="{Binding Name}" HorizontalOptions="Center" Padding="0,6,0,0" Grid.Row="1" FontSize="23" FontFamily="Montserrat" HeightRequest="40"/>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

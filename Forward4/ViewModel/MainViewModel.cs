@@ -12,11 +12,16 @@ namespace Forward4.ViewModel
 {
     public partial class MainViewModel : ObservableObject
     {
-
         [RelayCommand]
         public async void ToAllKursesPage()
         {
             await NavigationService.GetNavigation().PushAsync(new AllKurses(), true);
+        }
+
+        [RelayCommand]
+        public async void ToKursesLessonPage()
+        {
+            await NavigationService.GetNavigation().PushAsync(new KursLessons(), true);
         }
 
         private DataContext _context;

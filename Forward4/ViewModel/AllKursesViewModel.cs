@@ -21,13 +21,12 @@ namespace Forward4.ViewModel
 
 
         [RelayCommand]
-        public void SelectionMade()
+        public async void SelectionMade()
         {
-            _context.GetActiveUser();
-            /*            await _context.AddKursToUser(selectedKurs);
-            */
-/*            await NavigationService.GetNavigation().PushAsync(new KursLessons(), true);
-*/        }
+            int userId = _context.GetActiveUser();
+            _context.AddKursToUser(SelectedKurs, userId);
+            await NavigationService.GetNavigation().PushAsync(new KursLessons(), true);
+        }
 
         public void Init()
         {

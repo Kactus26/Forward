@@ -20,7 +20,7 @@ namespace Forward4.Model
         public string ImageUrl { get; set; }
 
         [OneToMany]
-        public List<Lessons> Lessonss { get; set; }
+        public List<Lessons> Lessons { get; set; }
         [ForeignKey(typeof(User))]
         public int UserId { get; set; }
     }
