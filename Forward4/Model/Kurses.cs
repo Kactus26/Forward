@@ -21,6 +21,8 @@ namespace Forward4.Model
         public string ImageUrl {  get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Lessons> Lessons { get; set; } = new List<Lessons>();
+        public List<Lessons> Lessons { get; set; }
+        [ManyToMany(typeof(UserKurses))]
+        public List<User> BelongsToUsers { get; set; } = new List<User>();
     }
 }

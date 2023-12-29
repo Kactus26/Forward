@@ -83,6 +83,9 @@
 	  <MauiXaml Update="View\AllKurses.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\KursLessons.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -23,20 +23,17 @@ namespace Forward4.Data
             await _context.CreateTableAsync<User>();
             await _context.CreateTableAsync<Active>();
             await _context.CreateTableAsync<Lessons>();
+            await _context.CreateTableAsync<UserKurses>();
             await _context.CreateTableAsync<Kurses>();
-            int seed = await _context.Table<User>().CountAsync();
-            if (seed == 0)
-            {
-                User admin = new User { Id = 0, Name = "Kactus", Password = "111" };
-                await _context.InsertAsync(admin);
-            }
-            seed = await _context.Table<Kurses>().CountAsync();
+            int seed = await _context.Table<Kurses>().CountAsync();
             if(seed == 0)
             {
-                Kurses GojoKurse = new Kurses { Author = "Gojo Satoru", Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl= "kursimagegojo.jpg" };
-                Kurses MikuKurse = new Kurses { Author = "Hatsune Miku", Description = "Wxplanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
+                Kurses GojoKurse = new Kurses { Author = "Gojo Satoru", Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl= "kursimagegojo" };
+                Kurses MikuKurse = new Kurses { Author = "Hatsune Miku", Description = "Wxplanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku" };
+                Kurses TestKurse = new Kurses { Author = "Test", Description = "test", LessonsCount = 3, Name = "test", ImageUrl = "presentsimple" };
                 await _context.InsertAsync(GojoKurse);
                 await _context.InsertAsync(MikuKurse);
+                await _context.InsertAsync(TestKurse);
                 Lessons lesson1 = new Lessons { LessonName = "Concentreation", BelongsToKurse = GojoKurse, KurseId = GojoKurse.Id};
                 Lessons lesson2 = new Lessons { LessonName = "Emotions", BelongsToKurse = GojoKurse, KurseId = GojoKurse.Id };
                 await _context.InsertAsync(lesson1);
@@ -45,7 +42,19 @@ namespace Forward4.Data
                 Lessons lesson4 = new Lessons { LessonName = "Confidence", BelongsToKurse = MikuKurse, KurseId = GojoKurse.Id };
                 await _context.InsertAsync(lesson3);
                 await _context.InsertAsync(lesson4);
+                User admin = new User { Id = 0, Name = "Kactus", Password = "111"};
+                admin.UserKurses.Add(MikuKurse);
+                await _context.InsertAsync(admin);
             }
+            var test = await _context.Table<Kurses>().FirstOrDefaultAsync();
+        }
+
+        public async Task AddKursToUser(Kurses kurs)
+        {
+            /*Active userId = await _context.Table<Active>().FirstOrDefaultAsync();
+            User user = await _context.Table<User>().FirstOrDefaultAsync(x => x.Id == userId.Id);
+            user.UserKurses.Add(kurs);
+            await _context.UpdateAsync(user);*/
         }
 
         public async Task<List<Kurses>> GetAllKurses()
@@ -62,6 +71,7 @@ namespace Forward4.Data
         public async Task NewActiveUser(int userId)
         {
             await _context.DeleteAllAsync<Active>();
+            User user = await _context.Table<User>().FirstOrDefaultAsync(x => x.Id == userId);
             Active actUser = new Active { UserId = userId };
             await _context.InsertAsync(actUser);
         }

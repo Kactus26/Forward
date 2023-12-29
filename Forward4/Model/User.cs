@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,5 +15,7 @@ namespace Forward4.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+        [ManyToMany(typeof(UserKurses))]
+        public List<Kurses> UserKurses { get; set; } = new List<Kurses>();
     }
 }
