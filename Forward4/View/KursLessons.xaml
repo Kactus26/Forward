@@ -26,6 +26,16 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Lessons">
                     <ContentView Padding="10,0,10,20">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        
                         <Border Background="#45443D" Stroke="Transparent">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="25"/>

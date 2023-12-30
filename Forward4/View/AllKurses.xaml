@@ -21,12 +21,22 @@
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Kurses">
                 <ContentView>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup Name="CommonStates">
+                            <VisualState Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    
                     <Border Background="#262521" Stroke="Transparent" StrokeThickness="2" Margin="9,18,9,0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20"/>
                         </Border.StrokeShape>
 
-                        <Grid Padding="10,15,10,0">
+                        <Grid Padding="10,10,10,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="6*"/>
                                 <RowDefinition/>
@@ -34,12 +44,18 @@
                                 <RowDefinition Height="0.5*"/>
                             </Grid.RowDefinitions>
 
-                            <Image Source="{Binding ImageUrl}" Margin="0,5,0,0"  WidthRequest="340" HeightRequest="200"/>
-
-                            <Label Text="{Binding Name}" HorizontalOptions="Center" Padding="0,6,0,0" Grid.Row="1" FontSize="23" FontFamily="Montserrat" HeightRequest="40"/>
-                            <Label Text="{Binding Author}" Padding="6,4,0,0" TextColor="#B8B7B3" Grid.Row="2" FontSize="18" FontFamily="Montserrat"/>
-                            <Label Text="Уроков: " Padding="0,4,30,0"  TextColor="#B8B7B3" Grid.Row="2" HorizontalOptions="End" FontSize="18" FontFamily="Montserrat" />
-                            <Label Text="{Binding LessonsCount}" Padding="0,4,15,0" TextColor="#B8B7B3" HorizontalOptions="End" Grid.Row="2" FontSize="18" FontFamily="Montserrat"/>
+                            <Border Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="25"/>
+                                </Border.StrokeShape>
+                                
+                                <Image Source="{Binding ImageUrl}" Margin="0,0,0,0" Aspect="AspectFill"  HeightRequest="200"/>
+                            </Border>
+                                    
+                            <Label Text="{Binding Name}" HorizontalOptions="Center" Padding="0,10,0,0" Grid.Row="1" FontSize="23" FontFamily="Montserrat" HeightRequest="40"/>
+                            <Label Text="{Binding Author}" Padding="6,7,0,0" TextColor="#B8B7B3" Grid.Row="2" FontSize="18" FontFamily="Montserrat"/>
+                            <Label Text="Уроков: " Padding="0,7,30,0"  TextColor="#B8B7B3" Grid.Row="2" HorizontalOptions="End" FontSize="18" FontFamily="Montserrat" />
+                            <Label Text="{Binding LessonsCount}" Padding="0,7,15,0" TextColor="#B8B7B3" HorizontalOptions="End" Grid.Row="2" FontSize="18" FontFamily="Montserrat"/>
                         </Grid>
                     </Border>
                 </ContentView>
