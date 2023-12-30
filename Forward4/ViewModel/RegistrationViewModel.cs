@@ -46,8 +46,8 @@ namespace Forward4.ViewModel
                 return;
             }
             User user = new User { Name = Name, Password = Password };
-            _context.NewActiveUser(user.Id);
             _context.RegisterUser(user);
+            _context.NewActiveUser(user.Id);
             await NavigationService.GetNavigation().PushAsync(new Main(), true);
         }
 

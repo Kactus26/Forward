@@ -28,6 +28,7 @@ namespace Forward4.Data
             int seed = _context.Table<User>().Count();
             if (seed == 0)
             {
+                
                 User admin = new User { Name = "Kactus", Password = "111", ActiveKurseId = 1 };
                 _context.Insert(admin);
                 Kurses gojoKurse = new Kurses { Author = "Gojo Satoru", UserId = admin.Id, Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl = "kursimagegojo.jpg" };
@@ -49,27 +50,35 @@ namespace Forward4.Data
             }
         }
 
+        public List<Kurses> GetUserKurses(int userId)
+        {
+            User user = _context.FindWithChildren<User>(userId);
+            if(user != null && user.UserKurses != null)
+                return user.UserKurses;
+            return null;
+        }
+
         public void AddKursToUser(Kurses selectedKurs, int userId)
         {
-            User user = _context.GetWithChildren<User>(userId);
+            User user = _context.FindWithChildren<User>(userId);
             Kurses test = user.UserKurses.FirstOrDefault(x => x.Id == selectedKurs.Id);
-            if (test == null)
+            if (test == null || user.UserKurses == null)
             {
                 user.UserKurses.Add(selectedKurs);
                 user.ActiveKurseId = selectedKurs.Id;
                 _context.UpdateWithChildren(user);
+                return;
             }
-            else
-            {
-                user.ActiveKurseId = selectedKurs.Id;
-                _context.Update(user);
-            }
+            user.ActiveKurseId = selectedKurs.Id;
+            _context.Update(user);
         }
 
-        public List<Lessons> GetKursLessons(int activeKursId)
+        public Kurses GetKurs(int activeKursId)
         {
             Kurses kurs = _context.GetWithChildren<Kurses>(activeKursId);
-            return kurs.Lessons;
+            if (kurs != null)
+                return kurs;
+            return null;
         }
 
         public User GetUser()

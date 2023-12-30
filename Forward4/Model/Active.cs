@@ -12,7 +12,7 @@ namespace Forward4.Model
 {
     public class Active
     {
-        [Key]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [ForeignKey(typeof(User))]
         public int UserId { get; set; }

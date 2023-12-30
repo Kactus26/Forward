@@ -19,6 +19,12 @@ namespace Forward4.ViewModel
         }
 
         [RelayCommand]
+        public async void ToYourKursesPage()
+        {
+            await NavigationService.GetNavigation().PushAsync(new YourKurses(), true);
+        }
+
+        [RelayCommand]
         public async void ToKursesLessonPage()
         {
             await NavigationService.GetNavigation().PushAsync(new KursLessons(), true);

@@ -3,21 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:Forward4.Model"
              xmlns:vm="clr-namespace:Forward4.ViewModel"
-             x:DataType="vm:AllKursesViewModel"
-             x:Class="Forward4.View.AllKurses">
-
+             x:DataType="vm:YourKursesViewModel"
+             x:Class="Forward4.View.YourKurses">
+    
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill">
             <Label
-                  Text="Все курсы"
-                  FontFamily="Montserrat"
-                  TextColor="White"
-                  Margin="38,0,0,0"
-                  FontSize="35"/>
+              Text="Ваши курсы"
+              FontFamily="Montserrat"
+              TextColor="White"
+              Margin="18,0,0,0"
+              FontSize="35"/>
         </HorizontalStackLayout>
     </Shell.TitleView>
 
-    <CollectionView Grid.Row="1" SelectedItem="{Binding SelectedKurs}" SelectionMode="Single" ItemsSource="{Binding AllKurses}" SelectionChangedCommand="{Binding SelectionMadeCommand}">
+    <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding UserKurses}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Kurses">
                 <ContentView>
@@ -48,10 +48,10 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="25"/>
                                 </Border.StrokeShape>
-                                
+
                                 <Image Source="{Binding ImageUrl}" Margin="0,0,0,0" Aspect="AspectFill"  HeightRequest="200"/>
                             </Border>
-                                    
+
                             <Label Text="{Binding Name}" HorizontalOptions="Center" Padding="0,10,0,0" Grid.Row="1" FontSize="23" FontFamily="Montserrat" HeightRequest="40"/>
                             <Label Text="{Binding Author}" Padding="6,7,0,0" TextColor="#B8B7B3" Grid.Row="2" FontSize="18" FontFamily="Montserrat"/>
                             <Label Text="Уроков: " Padding="0,7,30,0"  TextColor="#B8B7B3" Grid.Row="2" HorizontalOptions="End" FontSize="18" FontFamily="Montserrat" />

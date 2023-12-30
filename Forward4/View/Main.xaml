@@ -4,7 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:Forward4.ViewModel"
              x:DataType="vm:MainViewModel"
-             x:Class="Forward4.View.Main" Background="#2F2E2A">
+             x:Class="Forward4.View.Main">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -36,6 +36,7 @@
         <Image Source="kurses4" Grid.RowSpan="2" Grid.Column="0" Grid.Row="5"/>
         <Label Text="Ваши курсы" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,7" VerticalOptions="End" Grid.Column="1" Grid.Row="5"/>
         <Label Text="Открыть все сохранённые курсы" FontFamily="Montserrat" Margin="0,0,0,0" VerticalOptions="Start" TextColor="#B8B7B3" FontSize="18" Grid.Column="1" Grid.Row="6"/>
+        <Button Command="{Binding ToYourKursesPageCommand}" Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2" Opacity="0"/>
 
         <Image Source="kurses35" Grid.RowSpan="2" Grid.Column="0" Grid.Row="7"/>
         <Label Text="Новые курсы" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,7" VerticalOptions="End" Grid.Column="1" Grid.Row="7"/>

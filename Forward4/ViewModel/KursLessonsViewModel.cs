@@ -13,7 +13,7 @@ namespace Forward4.ViewModel
     public partial class KursLessonsViewModel : ObservableObject
     {
         [ObservableProperty]
-        public string text;
+        public string text = "Пока у вас нет активных курсов";
         [ObservableProperty]
         public List<Lessons> kursLessons;
         [ObservableProperty]
@@ -22,9 +22,13 @@ namespace Forward4.ViewModel
         public void Init()
         {
             User user = _context.GetUser();
-            KursLessons = _context.GetKursLessons(user.ActiveKurseId);
-            Text = user.UserKurses[user.ActiveKurseId - 1].Description;
-            ImageUrl = user.UserKurses[user.ActiveKurseId - 1].ImageUrl;
+            if (user.ActiveKurseId != 0)
+            {
+                Kurses kurs = _context.GetKurs(user.ActiveKurseId);
+                KursLessons = kurs.Lessons;
+                Text = kurs.Description;
+                ImageUrl = kurs.ImageUrl;
+            }
         }
 
         private DataContext _context;
