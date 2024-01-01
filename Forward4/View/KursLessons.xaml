@@ -35,12 +35,12 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        
+
                         <Border Background="#45443D" Stroke="Transparent">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="25"/>
                             </Border.StrokeShape>
-                            
+
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -60,5 +60,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button IsVisible="{Binding Visability}" Command="{Binding DeleteCommand}" BackgroundColor="Red" TextColor="White" Margin="0,24,0,0" WidthRequest="260" FontFamily="Montserrat" Text="Удалить курс" FontSize="28" CornerRadius="15"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -16,11 +16,22 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public string text = "Пока у вас нет активных курсов";
         [ObservableProperty]
+        public bool visability;
+        [ObservableProperty]
         public List<Lessons> kursLessons;
         [ObservableProperty]
         public string imageUrl;
         [ObservableProperty]
         public Lessons selectedLessons;
+        public int KursId {  get; set; }
+
+        [RelayCommand]
+        public async void Delete()
+        {
+            User user = _context.GetUser();
+            _context.DeleteKurs(user, KursId);
+            await NavigationService.GetNavigation().PushAsync(new Main(), true);
+        }
 
         [RelayCommand]
         public async void SelectionMade()
@@ -40,7 +51,10 @@ namespace Forward4.ViewModel
                 KursLessons = kurs.Lessons;
                 Text = kurs.Description;
                 ImageUrl = kurs.ImageUrl;
-            }
+                KursId = user.ActiveKurseId;
+                Visability = false;
+            } else
+                Visability = true;
         }
 
         private DataContext _context;

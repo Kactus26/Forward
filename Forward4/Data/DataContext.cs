@@ -73,6 +73,15 @@ namespace Forward4.Data
             _context.Update(user);
         }
 
+        public void DeleteKurs(User userId, int kursId)
+        {
+            User user = _context.GetWithChildren<User>(userId.Id);
+            Kurses kurs = user.UserKurses.FirstOrDefault(x=>x.Id==kursId);
+            user.ActiveKurseId = 0;
+            user.UserKurses.Remove(kurs);
+            _context.UpdateWithChildren(user);
+        }
+
         public Lessons GetLesson(int lessonId)
         {
             return _context.Find<Lessons>(lessonId);
