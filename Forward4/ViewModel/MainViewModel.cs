@@ -13,6 +13,12 @@ namespace Forward4.ViewModel
     public partial class MainViewModel : ObservableObject
     {
         [RelayCommand]
+        public async void ToVideo()
+        {
+            await NavigationService.GetNavigation().PushAsync(new Video(), true);
+        }
+
+        [RelayCommand]
         public async void ToAllKursesPage()
         {
             await NavigationService.GetNavigation().PushAsync(new AllKurses(), true);

@@ -25,8 +25,9 @@
         </Grid.ColumnDefinitions>
 
         <Image Source="kurses1" Grid.RowSpan="2" Grid.Column="0" Grid.Row="1" />
-        <Label Text="Следующий урок" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,-8" VerticalOptions="End" Grid.Column="1" Grid.Row="1"/>
-        <Label Text="Продолжение текущего курса" FontFamily="Montserrat" Margin="0,15,0,0" VerticalOptions="Start" TextColor="#B8B7B3" FontSize="18" Grid.Column="1" Grid.Row="2"/>
+        <Label Text="Текущий урок" FontFamily="Montserrat" FontSize="25" Margin="0,0,0,5" VerticalOptions="End" Grid.Column="1" Grid.Row="1"/>
+        <Label Text="Продолжение текущего курса" FontFamily="Montserrat" Margin="0,2,0,0" VerticalOptions="Start" TextColor="#B8B7B3" FontSize="18" Grid.Column="1" Grid.Row="2"/>
+        <Button Command="{Binding ToVideoCommand}" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Opacity="0"/>
 
         <Image Source="kurses2" Grid.RowSpan="2" Grid.Column="0" Grid.Row="3"/>
         <Label Text="Уроки курса"  FontFamily="Montserrat" VerticalOptions="End" Margin="0,0,0,7" FontSize="25" Grid.Column="1" Grid.Row="3"/>

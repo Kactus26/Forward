@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Forward4.Data;
 using Forward4.Model;
+using Forward4.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,17 @@ namespace Forward4.ViewModel
         public List<Lessons> kursLessons;
         [ObservableProperty]
         public string imageUrl;
+        [ObservableProperty]
+        public Lessons selectedLessons;
+
+        [RelayCommand]
+        public async void SelectionMade()
+        {
+            User user = _context.GetUser();
+            user.NextLessonId = SelectedLessons.Id;
+            _context.UpdateUser(user);
+            await NavigationService.GetNavigation().PushAsync(new Video(), true);
+        }
 
         public void Init()
         {

@@ -1,4 +1,5 @@
-﻿using Forward4.Data;
+﻿using CommunityToolkit.Maui;
+using Forward4.Data;
 using Forward4.Model;
 using Forward4.View;
 using Forward4.ViewModel;
@@ -14,6 +15,7 @@ namespace Forward4
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Quicksand-Light", "Quicksand");

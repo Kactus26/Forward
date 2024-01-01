@@ -22,7 +22,7 @@
         <BoxView HeightRequest="2" Color="#FF7B14" Margin="30, 25, 30, 5" />
         <Label Text="{Binding Text}" Padding="10" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Montserrat" FontSize="23"/>
         <BoxView HeightRequest="2" Color="#CC469D" Margin="30, 5, 30, 25" />
-        <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding KursLessons}">
+        <CollectionView Grid.Row="1" SelectionMode="Single" SelectedItem="{Binding SelectedLessons}" SelectionChangedCommand="{Binding SelectionMadeCommand}" ItemsSource="{Binding KursLessons}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Lessons">
                     <ContentView Padding="10,0,10,20">

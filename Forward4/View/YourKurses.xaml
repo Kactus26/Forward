@@ -17,7 +17,7 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
-    <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding UserKurses}">
+    <CollectionView Grid.Row="1" SelectionMode="Single" SelectionChangedCommand="{Binding SelectionMadeCommand}" SelectedItem="{Binding SelectedKurs}" ItemsSource="{Binding UserKurses}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Kurses">
                 <ContentView>

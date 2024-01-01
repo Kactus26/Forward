@@ -16,6 +16,16 @@ namespace Forward4.ViewModel
     {
         [ObservableProperty]
         public List<Kurses> userKurses;
+        [ObservableProperty]
+        public Kurses selectedKurs;
+
+        [RelayCommand]
+        public async void SelectionMade()
+        {
+            int userId = _context.GetActiveUser();
+            _context.AddKursToUser(SelectedKurs, userId);
+            await NavigationService.GetNavigation().PushAsync(new KursLessons(), true);
+        }
 
         public void Init()
         {

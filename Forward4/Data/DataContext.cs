@@ -35,7 +35,7 @@ namespace Forward4.Data
                 Kurses mikuKurse = new Kurses { Author = "Hatsune Miku", UserId = admin.Id, Description = "Explanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
                 _context.Insert(gojoKurse);
                 _context.Insert(mikuKurse);
-                Lessons lesson1 = new Lessons { Name = "Concentreation", Description = "First lesson description", KursId = gojoKurse.Id };
+                Lessons lesson1 = new Lessons { Name = "Concentreation", Description = "First lesson description", Text = "Примечание: На платформе .NET MAUI также есть более продвинутые способы реализации прокрутки и управления раскладкой, включая использование FlexLayout и других контейнеров. Вы можете выбрать подход, который наилучшим образом соответствует требованиям вашего приложения и дизайну.", KursId = gojoKurse.Id };
                 Lessons lesson2 = new Lessons { Name = "Emotions", Description = "Second lesson description", KursId = gojoKurse.Id };
                 _context.Insert(lesson1);
                 _context.Insert(lesson2);
@@ -73,6 +73,11 @@ namespace Forward4.Data
             _context.Update(user);
         }
 
+        public Lessons GetLesson(int lessonId)
+        {
+            return _context.Find<Lessons>(lessonId);
+        }
+
         public Kurses GetKurs(int activeKursId)
         {
             Kurses kurs = _context.GetWithChildren<Kurses>(activeKursId);
@@ -81,6 +86,11 @@ namespace Forward4.Data
             return null;
         }
 
+        public void UpdateUser(User user)
+        {
+            _context.Update(user);
+        }
+        
         public User GetUser()
         {
             int userId = GetActiveUser();
