@@ -23,6 +23,7 @@ namespace Forward4.Data
         {
             _context.CreateTable<User>();
             _context.CreateTable<Active>();
+            _context.CreateTable<Vocabulary>();
             _context.CreateTable<Lessons>();
             _context.CreateTable<Kurses>();
             int seed = _context.Table<User>().Count();
@@ -35,17 +36,22 @@ namespace Forward4.Data
                 Kurses mikuKurse = new Kurses { Author = "Hatsune Miku", UserId = admin.Id, Description = "Explanation of how to be a good dj", LessonsCount = 3, Name = "Soprano", ImageUrl = "kursimagemiku.jpg" };
                 _context.Insert(gojoKurse);
                 _context.Insert(mikuKurse);
-                Lessons lesson1 = new Lessons { Name = "Concentreation", Description = "First lesson description", Text = "Примечание: На платформе .NET MAUI также есть более продвинутые способы реализации прокрутки и управления раскладкой, включая использование FlexLayout и других контейнеров. Вы можете выбрать подход, который наилучшим образом соответствует требованиям вашего приложения и дизайну.", KursId = gojoKurse.Id };
-                Lessons lesson2 = new Lessons { Name = "Emotions", Description = "Second lesson description", KursId = gojoKurse.Id };
+                Vocabulary first = new Vocabulary { FirstWord = "Dog", SecondWord = "Собака", UserId = admin.Id };
+                Vocabulary second = new Vocabulary { FirstWord = "Cat", SecondWord = "Кот", UserId = admin.Id };
+                _context.Insert(first);
+                _context.Insert(second);
+                Lessons lesson1 = new Lessons { Name = "Concentreation", VideoUrl = "test.mp4", Description = "First lesson description", Text = "Примечание: На платформе .NET MAUI также есть более продвинутые способы реализации прокрутки и управления раскладкой, включая использование FlexLayout и других контейнеров. Вы можете выбрать подход, который наилучшим образом соответствует требованиям вашего приложения и дизайну.", KursId = gojoKurse.Id };
+                Lessons lesson2 = new Lessons { Name = "Emotions", VideoUrl = "Raw/test.mp4", Description = "Second lesson description", KursId = gojoKurse.Id };
                 _context.Insert(lesson1);
                 _context.Insert(lesson2);
-                Lessons lesson3 = new Lessons { Name = "Voice", Description = "First lesson description", KursId = mikuKurse.Id };
-                Lessons lesson4 = new Lessons { Name = "Confidence", Description = "Second lesson description", KursId = mikuKurse.Id };
+                Lessons lesson3 = new Lessons { Name = "Voice", VideoUrl = "test", Description = "First lesson description", KursId = mikuKurse.Id };
+                Lessons lesson4 = new Lessons { Name = "Confidence", VideoUrl = "Raw/test", Description = "Second lesson description", KursId = mikuKurse.Id };
                 _context.Insert(lesson3);
                 _context.Insert(lesson4);
                 gojoKurse.Lessons = new List<Lessons> { lesson1, lesson2 };
                 _context.UpdateWithChildren(gojoKurse);
                 admin.UserKurses = new List<Kurses> { gojoKurse };
+                admin.UserVocabulary = new List<Vocabulary> { first, second };
                 _context.UpdateWithChildren(admin);
             }
         }
@@ -55,6 +61,14 @@ namespace Forward4.Data
             User user = _context.FindWithChildren<User>(userId);
             if(user != null && user.UserKurses != null)
                 return user.UserKurses;
+            return null;
+        }
+
+        public List<Vocabulary> GetVocabularies(int userId) 
+        {
+            User user = _context.FindWithChildren<User>(userId);
+            if (user != null && user.UserKurses != null)
+                return user.UserVocabulary;
             return null;
         }
 

@@ -67,6 +67,7 @@
 	  <None Remove="Resources\Images\tasks.png" />
 	  <None Remove="Resources\Images\vocabulary.png" />
 	  <None Remove="Resources\Images\羽生まゐご「オノマトペ」feat.りりあ。.mp4" />
+	  <None Remove="Resources\Raw\test.mp4" />
 	</ItemGroup>
 
 	<ItemGroup>

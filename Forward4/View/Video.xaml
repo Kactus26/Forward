@@ -8,9 +8,9 @@
              Title="Video">
     <ScrollView>
         <VerticalStackLayout>
-            <Label Text="{Binding LessonName}" FontFamily="Montserrat" FontSize="40" HorizontalOptions="Center"/>
-            <toolkit:MediaElement HeightRequest="300" Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"/>
-            <Label Text="{Binding Text}"/>
+            <Label Text="{Binding LessonName}" Padding="0,20,0,0" FontFamily="Montserrat" FontSize="40" HorizontalOptions="Center"/>
+            <toolkit:MediaElement HeightRequest="300" Source="{Binding VideoUrl}"/>
+            <Label Text="{Binding Text}" Padding="15,0,15,0"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

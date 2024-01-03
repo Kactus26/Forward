@@ -17,7 +17,7 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public string text;
         [ObservableProperty]
-        public string lessonUrl;
+        public string videoUrl;
 
         public void Init()
         {
@@ -27,7 +27,7 @@ namespace Forward4.ViewModel
             {
                 Text = lesson.Text;
                 LessonName = lesson.Name;
-                LessonUrl = lesson.VideoUrl;
+                VideoUrl = lesson.VideoUrl;
             }
         }
         

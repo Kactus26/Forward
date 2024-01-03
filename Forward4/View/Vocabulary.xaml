@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Forward4.Model"
+             xmlns:vm="clr-namespace:Forward4.ViewModel"
+             x:DataType="vm:VocabularyViewModel"
              x:Class="Forward4.View.Vocabulary"
              Title="Vocabulary">
 
@@ -15,7 +18,54 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
-    <VerticalStackLayout>
-        <ListView/>
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <CollectionView ItemsSource="{Binding Vocabulary}" Grid.ColumnSpan="3">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Vocabulary" >
+                    <ContentView>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border Background="#262521" Stroke="Transparent" StrokeThickness="2" Margin="20,30,20,10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+
+                            <Grid Padding="10,10,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding FirstWord}" FontSize="20" FontFamily="Montserrat" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                <Image Source="logo" Grid.Column="1"/>
+                                <Button Grid.Column="1" Opacity="0"/>
+                                <Label Text="{Binding SecondWord}" Grid.Column="2" FontSize="20" FontFamily="Montserrat" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                            </Grid>
+                        </Border>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
 </ContentPage>
