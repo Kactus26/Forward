@@ -4,9 +4,8 @@
              x:Class="Forward4.View.TaskPairs"
              Title="TaskPairs">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        
+        
+        
     </VerticalStackLayout>
 </ContentPage>

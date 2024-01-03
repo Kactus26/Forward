@@ -52,9 +52,9 @@ namespace Forward4.ViewModel
                 Text = kurs.Description;
                 ImageUrl = kurs.ImageUrl;
                 KursId = user.ActiveKurseId;
-                Visability = false;
-            } else
                 Visability = true;
+            } else
+                Visability = false;
         }
 
         private DataContext _context;

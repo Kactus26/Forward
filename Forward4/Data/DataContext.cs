@@ -25,11 +25,25 @@ namespace Forward4.Data
             _context.CreateTable<Active>();
             _context.CreateTable<Vocabulary>();
             _context.CreateTable<Lessons>();
+            _context.CreateTable<TaskPairs>();
+            _context.CreateTable<TaskPairsCorrect>();
+            _context.CreateTable<TaskPairsWords>();
             _context.CreateTable<Kurses>();
             int seed = _context.Table<User>().Count();
             if (seed == 0)
             {
-                
+                TaskPairs taskPairs = new TaskPairs();
+                _context.Insert(taskPairs);
+
+                TaskPairsCorrect wordsCorrect = new TaskPairsCorrect { EWord1 = "Кот", RWord1 = "Кот", EWord2 = "Dog", RWord2 = "Собака", EWord3 = "Mouse", RWord3 = "Мышь", EWord4 = "Horse", RWord4 = "Лошадь", EWord5 = "Rabbit", RWord5 = "Заяц", TaskId = taskPairs.Id};
+                _context.Insert(wordsCorrect);
+                taskPairs.CorrectCombination = new List<TaskPairsCorrect> { wordsCorrect };
+
+                TaskPairsWords taskPairsWords = new TaskPairsWords { EWord1 = "Cat", EWord2 = "Dog", EWord3 = "Mouse", EWord4 = "Horse", EWord5 = "Rabbit", RWord1 = "Мышь", RWord2 = "Собака", RWord3 = "Кот", RWord4 = "Заяц", RWord5 = "Лошадь", TaskId = taskPairs.Id };
+                _context.Insert(taskPairsWords);
+                taskPairs.Words = new List<TaskPairsWords> { taskPairsWords };
+                _context.UpdateWithChildren(taskPairs);               
+
                 User admin = new User { Name = "Kactus", Password = "111", ActiveKurseId = 1 };
                 _context.Insert(admin);
                 Kurses gojoKurse = new Kurses { Author = "Gojo Satoru", UserId = admin.Id, Description = "Most powerfull sorcerer in the world", LessonsCount = 5, Name = "Obratnaya Technika", ImageUrl = "kursimagegojo.jpg" };
@@ -54,6 +68,11 @@ namespace Forward4.Data
                 admin.UserVocabulary = new List<Vocabulary> { first, second };
                 _context.UpdateWithChildren(admin);
             }
+        }
+
+        public TaskPairs GetTaskPairs()
+        {
+            return _context.GetWithChildren<TaskPairs>(1);
         }
 
         public List<Kurses> GetUserKurses(int userId)
