@@ -87,6 +87,23 @@ namespace Forward4.Data
             _context.Update(user);
         }
 
+        public void AddVocabulary(User user, string secondWod, string firstWord)
+        {
+            Vocabulary voc = new Vocabulary { FirstWord = firstWord, SecondWord = secondWod, UserId = user.Id };
+            user.UserVocabulary.Add(voc);
+            _context.Insert(voc);
+            _context.Update(user);
+        }
+
+        public void DeleteVocabulary(User userId, int vocId)
+        {
+            User user = _context.GetWithChildren<User>(userId.Id);
+            Vocabulary voc = user.UserVocabulary.FirstOrDefault(x => x.Id == vocId);
+            user.UserVocabulary.Remove(voc);
+            _context.Delete(voc);
+            _context.UpdateWithChildren(user);
+        }
+
         public void DeleteKurs(User userId, int kursId)
         {
             User user = _context.GetWithChildren<User>(userId.Id);

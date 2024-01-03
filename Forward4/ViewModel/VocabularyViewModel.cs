@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Forward4.Data;
 using Forward4.Model;
 using System;
@@ -13,7 +14,41 @@ namespace Forward4.ViewModel
     {
         [ObservableProperty]
         public List<Vocabulary> vocabulary;
+        [ObservableProperty]
+        public Vocabulary selectedVocabulary;
+        [ObservableProperty]
+        public string text = "Введите слово";
+        public string FirstWord { get; set; }
 
+        [RelayCommand]
+        public void Add()
+        {
+            if(FirstWord == null)
+            {
+                FirstWord = Text;
+                Text = "Введите перевод";
+            }
+            else
+            {
+                User user = _context.GetUser();
+                _context.AddVocabulary(user, Text, FirstWord);
+                FirstWord = null;
+                Text = "Введите слово";
+                Init();
+            }
+        }
+
+        [RelayCommand]
+        public void Delete()
+        {
+            if (SelectedVocabulary != null)
+            {
+                User user = _context.GetUser();
+                _context.DeleteVocabulary(user, SelectedVocabulary.Id);
+                SelectedVocabulary = null;
+                Init();
+            }
+        }
 
         public void Init()
         {

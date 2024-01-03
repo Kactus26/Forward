@@ -20,52 +20,48 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <CollectionView ItemsSource="{Binding Vocabulary}" Grid.ColumnSpan="3">
+        <CollectionView ItemsSource="{Binding Vocabulary}" SelectionMode="Single" SelectedItem="{Binding SelectedVocabulary}" Grid.ColumnSpan="3">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Vocabulary" >
                     <ContentView>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup Name="CommonStates">
-                                <VisualState Name="Selected">
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        
 
-                        <Border Background="#262521" Stroke="Transparent" StrokeThickness="2" Margin="20,30,20,10">
+                        <Border Background="#262521" Stroke="Transparent" StrokeThickness="2" Margin="10,10,10,10">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20"/>
                             </Border.StrokeShape>
 
-                            <Grid Padding="10,10,10,0">
+                            <Grid Padding="0,10,0,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-
-                                <Label Text="{Binding FirstWord}" FontSize="20" FontFamily="Montserrat" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
-                                <Image Source="logo" Grid.Column="1"/>
-                                <Button Grid.Column="1" Opacity="0"/>
-                                <Label Text="{Binding SecondWord}" Grid.Column="2" FontSize="20" FontFamily="Montserrat" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
-
+                                <Label Text="{Binding FirstWord}" FontSize="24" FontFamily="Montserrat" Padding="20,0,0,0"/>
+                                <Label Text="{Binding SecondWord}" FontSize="24" FontFamily="Montserrat" HorizontalOptions="End" Grid.Column="1" Padding="0,0,20,0"/>
                             </Grid>
                         </Border>
                     </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="10, 0, 10, 20" Stroke="#CC469D" StrokeThickness="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Entry FontSize="26" Margin="10,8,10,-9" Text="{Binding Text}" VerticalTextAlignment="Center" Grid.Row="3"/>
+        </Border>
+        
+        <Button Command="{Binding AddCommand}" Text="Добавить" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="#00C19C" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Margin="10,0,5,10"/>
+        <Button Command="{Binding DeleteCommand}" Text="Удалить" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="Red" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Grid.Column="1" Margin="5,0,10,10"/>
     </Grid>
-
 </ContentPage>
