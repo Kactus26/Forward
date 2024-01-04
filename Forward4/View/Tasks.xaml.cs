@@ -9,6 +9,6 @@ public partial class Tasks : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = new TasksViewModel();
-        NavigationService.AddNavigation(Navigation);
+        NavigationService.AddNavigation2(Navigation);
     }
 }

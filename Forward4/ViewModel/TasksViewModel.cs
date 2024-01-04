@@ -15,22 +15,22 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public async Task ToAllTasks()
         {
-            await NavigationService.GetNavigation().PushAsync(new TaskAll(), true);
+            await NavigationService.GetNavigation2().PushAsync(new TaskAll(), true);
         }
         [RelayCommand]
         public async Task ToPairs()
         {
-            await NavigationService.GetNavigation().PushAsync(new TaskPairs(), true);
+            await NavigationService.GetNavigation2().PushAsync(new TaskPairs(), true);
         }
         [RelayCommand]
         public async Task ToComplete()
         {
-            await NavigationService.GetNavigation().PushAsync(new TaskComplete(), true);
+            await NavigationService.GetNavigation2().PushAsync(new TaskComplete(), true);
         }
         [RelayCommand]
         public async Task ToTranslate()
         {
-            await NavigationService.GetNavigation().PushAsync(new TaskTranslate(), true);
+            await NavigationService.GetNavigation2().PushAsync(new TaskTranslate(), true);
         }
     }
 }

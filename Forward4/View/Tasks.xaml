@@ -33,7 +33,7 @@
                 </Border.StrokeShape>
                 <VerticalStackLayout Padding="15,0,0,5">
                     <Label Text="Все" FontSize="24" Padding="0,5,0,0" FontFamily="Montserrat"/>
-                    <Label Text="Все виды заданий в перемешку" Padding="0,5,0,5" FontSize="18" FontFamily="Montserrat" TextColor="#B8B7B3"/>
+                <Label Text="Все виды заданий в перемешку" Padding="0,5,0,5" TextColor="#FF7B14" FontSize="18" FontFamily="Montserrat"/>
                 </VerticalStackLayout>
             </Border>
 
@@ -44,29 +44,29 @@
             </Border.StrokeShape>
             <VerticalStackLayout Padding="15,0,0,5">
                 <Label Text="Пары слов" FontSize="24" Padding="0,5,0,0" FontFamily="Montserrat"/>
-                <Label Text="Соотнести разные переводы слова по парам" Padding="0,5,0,5" FontSize="18" FontFamily="Montserrat" TextColor="#B8B7B3"/>
+                <Label Text="Соотнести разные переводы слова по парам" Padding="0,5,0,5" FontSize="18" TextColor="#00C19C" FontFamily="Montserrat"/>
             </VerticalStackLayout>
         </Border>
 
-        <Button Command="{Binding ToCompleteCommand}"  Grid.Row="2" Opacity="0"/>
+        <Button Command="{Binding ToCompleteCommand}" Grid.Row="2" Opacity="0"/>
         <Border BackgroundColor="#262521" Grid.Row="2" Margin="10,20,10,0" Stroke="Transparent">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
             <VerticalStackLayout Padding="15,0,0,5">
                 <Label Text="Дополнить предложеине" FontSize="24" Padding="0,5,0,0" FontFamily="Montserrat"/>
-                <Label Text="Заполнить пробел в предложении одним из предложенных вариантов" Padding="0,5,0,5" FontSize="18" FontFamily="Montserrat" TextColor="#B8B7B3"/>
+                <Label Text="Заполнить пробел в предложении одним из предложенных вариантов" Padding="0,5,0,5" TextColor="LightPink" FontSize="18" FontFamily="Montserrat"/>
             </VerticalStackLayout>
         </Border>
 
-        <Button Command="{Binding ToTranslateCommand}"  Grid.Row="3" Opacity="0"/>
+        <Button Command="{Binding ToTranslateCommand}" Grid.Row="3" Opacity="0"/>
         <Border BackgroundColor="#262521" Grid.Row="3" Margin="10,20,10,0" Stroke="Transparent">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
             <VerticalStackLayout Padding="15,0,0,5">
                 <Label Text="Перевести предложение" FontSize="24" Padding="0,5,0,0" FontFamily="Montserrat"/>
-                <Label Text="Перевести предложение с одного языка на другой" FontSize="18" Padding="0,5,0,5" FontFamily="Montserrat" TextColor="#B8B7B3"/>
+                <Label Text="Перевести предложение с одного языка на другой" FontSize="18" Padding="0,5,0,5" TextColor="LightBlue" FontFamily="Montserrat"/>
             </VerticalStackLayout>
         </Border>
     </Grid>

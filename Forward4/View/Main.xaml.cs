@@ -8,6 +8,6 @@ public partial class Main : ContentPage
 	public Main()
 	{
 		InitializeComponent();
-		BindingContext = new MainViewModel(new DataContext());
-	}
+		BindingContext = new MainViewModel();
+    }
 }

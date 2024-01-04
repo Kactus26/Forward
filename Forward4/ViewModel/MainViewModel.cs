@@ -15,7 +15,7 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public async void ToVideo()
         {
-            await NavigationService.GetNavigation().PushAsync(new Video(), true);
+            await NavigationService.GetNavigation().PushAsync(new TaskAll(), true);
         }
 
         [RelayCommand]
@@ -34,12 +34,6 @@ namespace Forward4.ViewModel
         public async void ToKursesLessonPage()
         {
             await NavigationService.GetNavigation().PushAsync(new KursLessons(), true);
-        }
-
-        private DataContext _context;
-        public MainViewModel(DataContext db)
-        {
-            _context = db;
         }
     }
 }
