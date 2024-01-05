@@ -29,10 +29,14 @@ namespace Forward4.Data
             _context.CreateTable<TaskPairsCorrect>();
             _context.CreateTable<TaskPairsEnglish>();
             _context.CreateTable<TaskPairsRussian>();
+            _context.CreateTable<TaskComplete>();
             _context.CreateTable<Kurses>();
             int seed = _context.Table<User>().Count();
             if (seed == 0)
             {
+                TaskComplete taskComplete = new TaskComplete { Sentence = "He was ___ man ever existed", Answear1 = "The strongest", Answear2 = "More stronger", Answear3 = "Most strongest", Answear4 = "The stronger", CorrectAnswear = "The strongest"};
+                _context.Insert(taskComplete);
+
                 TaskPairs taskPairs = new TaskPairs();
                 _context.Insert(taskPairs);
 
@@ -91,6 +95,11 @@ namespace Forward4.Data
                 admin.UserVocabulary = new List<Vocabulary> { first, second };
                 _context.UpdateWithChildren(admin);
             }
+        }
+
+        public TaskComplete GetTaskComplete(int TaskNumber)
+        {
+            return _context.Get<TaskComplete>(TaskNumber);
         }
 
         public TaskPairs GetTaskPairs(int TaskNumber)

@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Forward4.Model"
+             xmlns:vm="clr-namespace:Forward4.ViewModel"
+             x:DataType="vm:TaskCompleteViewModel"
              x:Class="Forward4.View.TaskComplete"
              Title="TaskComplete">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" Padding="15,15" FontFamily="Montserrat"/>
+        <BoxView HeightRequest="2" Color="#00C19C" Margin="45, 10, 45, 30" />
+        <CollectionView ItemsSource="{Binding Answears}" SelectedItem="{Binding SelectedAnswear}" SelectionChangedCommand="{Binding NewAnswearCommand}" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <Border Background="#262521" Stroke="Transparent" Margin="20,3,20,3">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding}" Padding="0,7,0,7" HorizontalTextAlignment="Center" FontSize="25" FontFamily="Montserrat"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="{Binding ButtonText}" IsVisible="{Binding ButtonVisible}" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="Red" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Grid.Column="1" Margin="40,50,40,10"/>
     </VerticalStackLayout>
 </ContentPage>
