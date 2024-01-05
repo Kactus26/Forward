@@ -61,7 +61,7 @@
             <Entry FontSize="26" Margin="10,8,10,-9" Text="{Binding Text}" VerticalTextAlignment="Center" Grid.Row="3"/>
         </Border>
         
-        <Button Command="{Binding AddCommand}" Text="Добавить" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="#00C19C" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Margin="10,0,5,10"/>
-        <Button Command="{Binding DeleteCommand}" Text="Удалить" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="Red" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Grid.Column="1" Margin="5,0,10,10"/>
+        <Button Command="{Binding AddCommand}" Text="Добавить" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="#00C19C" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Margin="10,-5,5,15"/>
+        <Button Command="{Binding DeleteCommand}" Text="Удалить" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="Red" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Grid.Column="1" Margin="5,-5,10,15"/>
     </Grid>
 </ContentPage>

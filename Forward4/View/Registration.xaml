@@ -21,9 +21,6 @@
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <Border.Shadow>
-                <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
-            </Border.Shadow>
             <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="1" Text="{Binding Name}"/>
         </Border>
 
@@ -32,9 +29,6 @@
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20" />
             </Border.StrokeShape>
-            <Border.Shadow>
-                <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
-            </Border.Shadow>
             <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="2" Text="{Binding Password}" IsPassword="True"/>
         </Border>
 
@@ -43,9 +37,6 @@
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20" />
             </Border.StrokeShape>
-            <Border.Shadow>
-                <Shadow Brush="Black" Offset="6, 8" Radius="5" Opacity="1"/>
-            </Border.Shadow>
             <Entry FontSize="26" Margin="10,8,10,-10" VerticalTextAlignment="Center" Grid.Row="3" Text="{Binding CheckPassword}" IsPassword="True"/>
         </Border>
 

@@ -30,10 +30,27 @@ namespace Forward4.Data
             _context.CreateTable<TaskPairsEnglish>();
             _context.CreateTable<TaskPairsRussian>();
             _context.CreateTable<TaskComplete>();
+            _context.CreateTable<TaskTranslate>();
+            _context.CreateTable<TranslationWords>();
             _context.CreateTable<Kurses>();
             int seed = _context.Table<User>().Count();
             if (seed == 0)
             {
+                TaskTranslate taskTranslate = new TaskTranslate { Sentance = "Уберите от меня этого разработчика", CorrectSentance = "Get this developer away from me" };
+                _context.Insert(taskTranslate);
+
+                List<TranslationWords> words = new List<TranslationWords> { 
+                    new TranslationWords { Word = "Get", TaskId = taskTranslate.Id },
+                    new TranslationWords { Word = "from", TaskId = taskTranslate.Id },
+                    new TranslationWords { Word = "me", TaskId = taskTranslate.Id },
+                    new TranslationWords { Word = "away", TaskId = taskTranslate.Id },
+                    new TranslationWords { Word = "this", TaskId = taskTranslate.Id },
+                    new TranslationWords { Word = "developer", TaskId = taskTranslate.Id },
+                    };
+                _context.InsertAll(words);
+                taskTranslate.Words = words;
+                _context.UpdateWithChildren(taskTranslate);
+
                 TaskComplete taskComplete = new TaskComplete { Sentence = "He was ___ man ever existed", Answear1 = "The strongest", Answear2 = "More stronger", Answear3 = "Most strongest", Answear4 = "The stronger", CorrectAnswear = "The strongest"};
                 _context.Insert(taskComplete);
 
@@ -95,6 +112,11 @@ namespace Forward4.Data
                 admin.UserVocabulary = new List<Vocabulary> { first, second };
                 _context.UpdateWithChildren(admin);
             }
+        }
+
+        public TaskTranslate GetTaskTranslate(int TaskNumber)
+        {
+            return _context.GetWithChildren<TaskTranslate>(TaskNumber);
         }
 
         public TaskComplete GetTaskComplete(int TaskNumber)
