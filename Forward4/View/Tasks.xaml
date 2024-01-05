@@ -55,7 +55,7 @@
             </Border.StrokeShape>
             <VerticalStackLayout Padding="15,0,0,5">
                 <Label Text="Дополнить предложеине" FontSize="24" Padding="0,5,0,0" FontFamily="Montserrat"/>
-                <Label Text="Заполнить пробел в предложении одним из предложенных вариантов" Padding="0,5,0,5" TextColor="LightPink" FontSize="18" FontFamily="Montserrat"/>
+                <Label Text="Заполнить пробел в предложении одним из предложенных вариантов" Padding="0,5,0,5" TextColor="#CC469D" FontSize="18" FontFamily="Montserrat"/>
             </VerticalStackLayout>
         </Border>
 

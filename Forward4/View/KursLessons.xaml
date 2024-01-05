@@ -60,6 +60,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button IsVisible="{Binding Visability}" Command="{Binding DeleteCommand}" BackgroundColor="Red" TextColor="White" Margin="0,24,0,0" WidthRequest="260" FontFamily="Montserrat" Text="Удалить курс" FontSize="28" CornerRadius="15"/>
+        <Button IsVisible="{Binding Visability}" Command="{Binding DeleteCommand}" BackgroundColor="Transparent" BorderColor="Red" BorderWidth="2" TextColor="White" Margin="0,24,0,0" WidthRequest="260" FontFamily="Montserrat" Text="Удалить курс" FontSize="28"/>
     </VerticalStackLayout>
 </ContentPage>

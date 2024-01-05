@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Forward4.Data;
+using Forward4.Model;
 using Forward4.View;
 
 namespace Forward4.ViewModel
@@ -7,13 +9,83 @@ namespace Forward4.ViewModel
     public partial class TaskPairsViewModel : ObservableObject
     {
         [ObservableProperty]
-        public List<TaskPairs> firstCollection;
+        public int mistakes = 0;
         [ObservableProperty]
-        public List<TaskPairs> secondCollection;
+        public string text = "Проверить";
+        [ObservableProperty]
+        public TaskPairsEnglish english;
+        [ObservableProperty]
+        public TaskPairsRussian russian;
+        [ObservableProperty]
+        public List<TaskPairsEnglish> firstCollection;
+        [ObservableProperty]
+        public List<TaskPairsRussian> secondCollection;
+        public TaskPairsCorrect Correct { get; set; }
+        public int TaskNumber { get; set; } = 1;
+
+        [RelayCommand]
+        public async void Check()
+        {
+            if (FirstCollection.Count == 0 || Mistakes == 3)
+            {
+                await NavigationService.GetNavigation2().PopAsync();
+            }
+            if (English == null || Russian == null)
+                return;
+            if (English.Word == Correct.EWord1 && Russian.Word == Correct.RWord1)
+                CorrectAnswer();
+            else if (English.Word == Correct.EWord2 && Russian.Word == Correct.RWord2)
+                CorrectAnswer();
+            else if (English.Word == Correct.EWord3 && Russian.Word == Correct.RWord3)
+                CorrectAnswer();
+            else if (English.Word == Correct.EWord4 && Russian.Word == Correct.RWord4)
+                CorrectAnswer();
+            else if (English.Word == Correct.EWord5 && Russian.Word == Correct.RWord5)
+                CorrectAnswer();
+            else
+            {   if (Mistakes == 2)
+                    Text = "Вы проиграли(((";
+                Mistakes++;
+            }
+        }
+
+        private void CorrectAnswer()
+        {
+            if (FirstCollection.Count == 1)
+                Text = "Победа;)";
+
+            int delInd = FirstCollection.FindIndex(x => x.Word == English.Word); //После Remove отображение ломалось
+            List<TaskPairsEnglish> temp1 = new List<TaskPairsEnglish>();
+            for (int i = 0; i < FirstCollection.Count; i++)
+            {
+                if (i == delInd)
+                    continue;
+                TaskPairsEnglish tmp1 = FirstCollection[i];
+                temp1.Add(tmp1);
+            }
+            FirstCollection = temp1;
+
+            delInd = SecondCollection.FindIndex(x => x.Word == Russian.Word);
+            List<TaskPairsRussian>  temp2 = new List<TaskPairsRussian>();
+            for (int i = 0; i < SecondCollection.Count; i++)
+            {
+                if (i == delInd)
+                    continue;
+                TaskPairsRussian tmp2 = SecondCollection[i];
+                temp2.Add(tmp2);
+            }
+            SecondCollection = temp2;
+        }
+
 
         public void Init()
         {
-            var test = _context.GetTaskPairs();
+            var task = _context.GetTaskPairs(TaskNumber);
+            FirstCollection = task.EWords;
+            SecondCollection = task.RWords;
+            Correct = task.CorrectCombination[0];
+            Text = "Проверить";
+            Mistakes = 0;
         }
 
 

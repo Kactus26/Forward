@@ -27,7 +27,8 @@ namespace Forward4.Data
             _context.CreateTable<Lessons>();
             _context.CreateTable<TaskPairs>();
             _context.CreateTable<TaskPairsCorrect>();
-            _context.CreateTable<TaskPairsWords>();
+            _context.CreateTable<TaskPairsEnglish>();
+            _context.CreateTable<TaskPairsRussian>();
             _context.CreateTable<Kurses>();
             int seed = _context.Table<User>().Count();
             if (seed == 0)
@@ -35,13 +36,35 @@ namespace Forward4.Data
                 TaskPairs taskPairs = new TaskPairs();
                 _context.Insert(taskPairs);
 
-                TaskPairsCorrect wordsCorrect = new TaskPairsCorrect { EWord1 = "Кот", RWord1 = "Кот", EWord2 = "Dog", RWord2 = "Собака", EWord3 = "Mouse", RWord3 = "Мышь", EWord4 = "Horse", RWord4 = "Лошадь", EWord5 = "Rabbit", RWord5 = "Заяц", TaskId = taskPairs.Id};
+                TaskPairsCorrect wordsCorrect = new TaskPairsCorrect { EWord1 = "Cat", RWord1 = "Кот", EWord2 = "Dog", RWord2 = "Собака", EWord3 = "Mouse", RWord3 = "Мышь", EWord4 = "Horse", RWord4 = "Лошадь", EWord5 = "Rabbit", RWord5 = "Заяц", TaskId = taskPairs.Id};
                 _context.Insert(wordsCorrect);
                 taskPairs.CorrectCombination = new List<TaskPairsCorrect> { wordsCorrect };
 
-                TaskPairsWords taskPairsWords = new TaskPairsWords { EWord1 = "Cat", EWord2 = "Dog", EWord3 = "Mouse", EWord4 = "Horse", EWord5 = "Rabbit", RWord1 = "Мышь", RWord2 = "Собака", RWord3 = "Кот", RWord4 = "Заяц", RWord5 = "Лошадь", TaskId = taskPairs.Id };
-                _context.Insert(taskPairsWords);
-                taskPairs.Words = new List<TaskPairsWords> { taskPairsWords };
+                TaskPairsEnglish a = new TaskPairsEnglish { Word = "Cat", TaskId = taskPairs.Id };
+                TaskPairsEnglish b = new TaskPairsEnglish { Word = "Dog", TaskId = taskPairs.Id };
+                TaskPairsEnglish c = new TaskPairsEnglish { Word = "Horse", TaskId = taskPairs.Id };
+                TaskPairsEnglish d = new TaskPairsEnglish { Word = "Rabbit", TaskId = taskPairs.Id };
+                TaskPairsEnglish e = new TaskPairsEnglish { Word = "Mouse", TaskId = taskPairs.Id };
+
+                List<TaskPairsEnglish> taskPairsEnglish = new List<TaskPairsEnglish>
+                {
+                    a,b,c, d,e
+                };
+                _context.InsertAll(taskPairsEnglish);
+                taskPairs.EWords = taskPairsEnglish;
+
+                TaskPairsRussian f = new TaskPairsRussian { Word = "Собака", TaskId = taskPairs.Id };
+                TaskPairsRussian g = new TaskPairsRussian { Word = "Кот", TaskId = taskPairs.Id };
+                TaskPairsRussian h = new TaskPairsRussian { Word = "Заяц", TaskId = taskPairs.Id };
+                TaskPairsRussian i = new TaskPairsRussian { Word = "Лошадь", TaskId = taskPairs.Id };
+                TaskPairsRussian j = new TaskPairsRussian { Word = "Мышь", TaskId = taskPairs.Id };
+
+                List<TaskPairsRussian> taskPairsRussian = new List<TaskPairsRussian>
+                {
+                    f,g,h,i,j
+                };
+                _context.InsertAll(taskPairsRussian);
+                taskPairs.RWords = taskPairsRussian;
                 _context.UpdateWithChildren(taskPairs);               
 
                 User admin = new User { Name = "Kactus", Password = "111", ActiveKurseId = 1 };
@@ -70,9 +93,9 @@ namespace Forward4.Data
             }
         }
 
-        public TaskPairs GetTaskPairs()
+        public TaskPairs GetTaskPairs(int TaskNumber)
         {
-            return _context.GetWithChildren<TaskPairs>(1);
+            return _context.GetWithChildren<TaskPairs>(TaskNumber);
         }
 
         public List<Kurses> GetUserKurses(int userId)

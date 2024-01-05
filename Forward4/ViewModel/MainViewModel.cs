@@ -15,7 +15,7 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public async void ToVideo()
         {
-            await NavigationService.GetNavigation().PushAsync(new TaskAll(), true);
+            await NavigationService.GetNavigation().PushAsync(new Video(), true);
         }
 
         [RelayCommand]
