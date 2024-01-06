@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Forward4.Data;
 using Forward4.Model;
@@ -17,7 +18,7 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public string text;
         [ObservableProperty]
-        public string videoUrl;
+        public MediaSource videoUrl;
 
         public void Init()
         {
@@ -27,7 +28,7 @@ namespace Forward4.ViewModel
             {
                 Text = lesson.Text;
                 LessonName = lesson.Name;
-                VideoUrl = lesson.VideoUrl;
+                VideoUrl = MediaSource.FromResource(lesson.VideoUrl);
             }
         }
         

@@ -12,7 +12,7 @@
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <Entry FontSize="25" Margin="10,10,10,-9" VerticalTextAlignment="Center" Grid.Row="1" Text="{Binding Text}"/>
+            <Entry FontSize="28" Margin="10,10,10,-9" VerticalTextAlignment="Center" FontFamily="Montserrat" Grid.Row="1" Text="{Binding Text}"/>
         </Border>
 
         <CollectionView ItemsSource="{Binding Words}" SelectedItem="{Binding Word}" SelectionChangedCommand="{Binding SelectionChangedCommand}" Margin="0,10,0,0" SelectionMode="Single">

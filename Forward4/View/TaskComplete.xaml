@@ -25,6 +25,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="{Binding ButtonText}" IsVisible="{Binding ButtonVisible}" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="Red" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Grid.Column="1" Margin="40,50,40,10"/>
+        <Button Text="{Binding ButtonText}" Command="{Binding ReturnCommand}" IsVisible="{Binding ButtonVisible}" TextColor="White" FontSize="25" BackgroundColor="Transparent" BorderColor="Red" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Grid.Column="1" Margin="40,50,40,10"/>
     </VerticalStackLayout>
 </ContentPage>

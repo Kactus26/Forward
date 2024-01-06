@@ -4,9 +4,17 @@
              x:Class="Forward4.View.TaskAll"
              Title="TaskAll">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <VerticalStackLayout IsEnabled="True">
+
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout IsEnabled="False">
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout IsEnabled="False">
+
+        </VerticalStackLayout>
+        
     </VerticalStackLayout>
 </ContentPage>

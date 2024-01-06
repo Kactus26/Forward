@@ -36,7 +36,7 @@ namespace Forward4.ViewModel
         public async void Check()
         {
             Text = Text.Trim();
-            if(ButtonText == "Вы великолепны")
+            if(ButtonText == "Вы великолепны!")
                 await NavigationService.GetNavigation2().PopAsync();
 
             if (Text == Correct)

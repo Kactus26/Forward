@@ -26,6 +26,12 @@ namespace Forward4.ViewModel
         private string CorrectAnswear { get; set; }
 
         [RelayCommand]
+        public async void Return()
+        {
+            await NavigationService.GetNavigation2().PopAsync();
+        }
+
+        [RelayCommand]
         public void NewAnswear()
         {
             if(SelectedAnswear == CorrectAnswear)
