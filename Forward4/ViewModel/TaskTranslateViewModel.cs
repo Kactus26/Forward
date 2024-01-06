@@ -17,7 +17,7 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public string buttonText = "Проверить";
         [ObservableProperty]
-        public string text;
+        public string text = "";
         [ObservableProperty]
         public TranslationWords word;
         [ObservableProperty]
