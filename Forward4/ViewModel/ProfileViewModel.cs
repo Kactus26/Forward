@@ -4,6 +4,7 @@ using Forward4.Data;
 using Forward4.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,12 @@ namespace Forward4.ViewModel
         public int unsuccessfulTasksCount;
         [ObservableProperty]
         public string userName;
+
+        [RelayCommand]
+        public void Update()
+        {
+            Init();
+        }
 
         public void Init()
         {

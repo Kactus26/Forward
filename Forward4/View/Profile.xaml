@@ -39,18 +39,18 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="1">
-            <Label Text="Сохранено курсов" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding KursCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Label Text="Сохранено курсов" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding KursCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-            <Label Text="Выполнено заданий" FontFamily="Montserrat" HorizontalTextAlignment="Center" FontSize="25"/>
-            <Label Text="{Binding SuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Label Text="Выполнено заданий" FontFamily="Montserrat" HorizontalTextAlignment="Center" FontSize="23"/>
+            <Label Text="{Binding SuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
         </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
-            <Label Text="Неудачных попыток решения" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding UnsuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
+        <VerticalStackLayout Margin="0,-35,0,0" Grid.Row="2" Grid.ColumnSpan="2">
+            <Label Text="Неудачных попыток решения" Margin="20,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding UnsuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
+            <Button Command="{Binding UpdateCommand}" Margin="0,20,0,0" WidthRequest="200" Text="Обновить" TextColor="White" FontSize="23" BackgroundColor="Transparent" BorderColor="LightBlue" FontFamily="Montserrat" BorderWidth="2"/>
         </VerticalStackLayout>
-
     </Grid>
 </ContentPage>
