@@ -21,12 +21,19 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public List<TaskPairsRussian> secondCollection;
         public TaskPairsCorrect Correct { get; set; }
-        public int TaskNumber { get; set; } = 1;
+        private int TaskNumber { get; set; } = 1;
+        private User User { get; set; }
 
         [RelayCommand]
         public async void Check()
         {
-            if (FirstCollection.Count == 0 || Mistakes == 3)
+            if (FirstCollection.Count == 0)
+            {
+                User.SuccessfulCompletedTasks++;
+                _context.UpdateUser(User);
+                await NavigationService.GetNavigation2().PopAsync();
+            }
+            if (Mistakes == 3)
             {
                 await NavigationService.GetNavigation2().PopAsync();
             }
@@ -80,6 +87,7 @@ namespace Forward4.ViewModel
 
         public void Init()
         {
+            User = _context.GetUser();
             var task = _context.GetTaskPairs(TaskNumber);
             FirstCollection = task.EWords;
             SecondCollection = task.RWords;

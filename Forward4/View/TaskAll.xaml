@@ -74,7 +74,8 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Text="{Binding Text3}" Command="{Binding Check2Command}" TextColor="White" MaximumWidthRequest="200" FontSize="25" BackgroundColor="Transparent" BorderColor="LightBlue" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Margin="0,12,0,36"/>
+            <Button Text="{Binding Text3}" Command="{Binding Check2Command}" TextColor="White" MaximumWidthRequest="400" FontSize="25" BackgroundColor="Transparent" BorderColor="LightBlue" FontFamily="Montserrat" BorderWidth="2" Grid.Row="2" Margin="0,12,0,36"/>
+            
             <HorizontalStackLayout Margin="0,-30,0,0" HorizontalOptions="Center">
                 <Label Text="{Binding Mistakes}" TextColor="Red" FontSize="25"/>
                 <Label Text="/3" TextColor="Red" FontSize="25"/>

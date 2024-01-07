@@ -19,14 +19,33 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.3*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <Frame BackgroundColor="#45443D" BorderColor="Transparent">
-            <Image Source="user"/>
-        </Frame>
-        <Label Text="{Binding UserName}" VerticalOptions="Start" FontSize="38" Margin="0,13,0,0"  FontFamily="Montserrat" HorizontalOptions="Center" Grid.Row="1"/>
+        <VerticalStackLayout Grid.ColumnSpan="2">        
+            <Border Margin="15,15,15,0" Grid.ColumnSpan="2" Stroke="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+                <Image Source="user" Aspect="AspectFill"/>
+            </Border>
+            <Label Text="{Binding UserName}" Grid.ColumnSpan="2" VerticalOptions="Start" FontSize="38" Margin="0,13,0,0"  FontFamily="Montserrat" HorizontalOptions="Center" Grid.Row="0"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1">
+            <Label Text="Сохранено курсов" FontFamily="Montserrat" FontSize="25" Grid.Row="1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding KursCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" Grid.Row="2" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1" Grid.Column="2">
+            <Label Text="Выполнено заданий" FontFamily="Montserrat" HorizontalTextAlignment="Center" FontSize="25" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="{Binding SuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+        
     </Grid>
 </ContentPage>

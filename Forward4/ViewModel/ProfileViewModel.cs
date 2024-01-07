@@ -13,22 +13,26 @@ namespace Forward4.ViewModel
     public partial class ProfileViewModel : ObservableObject
     {
         public int ActiveUserId;
-
+        [ObservableProperty]
+        public int kursCount;
+        [ObservableProperty]
+        public int successfulTasksCount;
         [ObservableProperty]
         public string userName;
 
-        public void GetUserName()
+        public void Init()
         {
-            int ActiveUserId = _context.GetActiveUser();
-            User user = _context.GetUserById(ActiveUserId);
+            User user = _context.GetUser();
             UserName = user.Name;
+            SuccessfulTasksCount = user.SuccessfulCompletedTasks;
+            KursCount = user.UserKurses.Count;
         }
 
         private DataContext _context;
         public ProfileViewModel(DataContext db)
         {
             _context = db;
-            GetUserName();
+            Init();
         }
     }
 }

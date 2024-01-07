@@ -24,6 +24,8 @@ namespace Forward4.ViewModel
         public List<TranslationWords> words;
         private string Correct {  get; set; }
         private int Task { get; set; } = 1;
+        private User User { get; set; }
+
 
         [RelayCommand]
         public void SelectionChanged()
@@ -36,8 +38,12 @@ namespace Forward4.ViewModel
         public async void Check()
         {
             Text = Text.Trim();
-            if(ButtonText == "Вы великолепны!")
+            if (ButtonText == "Вы великолепны!")
+            {
+                User.SuccessfulCompletedTasks++;
+                _context.UpdateUser(User);
                 await NavigationService.GetNavigation2().PopAsync();
+            }
 
             if (Text == Correct)
                 ButtonText = "Вы великолепны!";
@@ -50,6 +56,7 @@ namespace Forward4.ViewModel
 
         private void Init()
         {
+            User = _context.GetUser();
             TaskTranslate task = _context.GetTaskTranslate(Task);
             Sentance = task.Sentance;
             Words = task.Words;

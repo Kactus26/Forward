@@ -24,6 +24,7 @@ namespace Forward4.ViewModel
         private List<string> answears = new List<string>();
         private int TaskNumber { get; set; } = 1;
         private string CorrectAnswear { get; set; }
+        private User User { get; set; }
 
         [RelayCommand]
         public async void Return()
@@ -34,8 +35,12 @@ namespace Forward4.ViewModel
         [RelayCommand]
         public void NewAnswear()
         {
-            if(SelectedAnswear == CorrectAnswear)
+            if (SelectedAnswear == CorrectAnswear)
+            {
+                User.SuccessfulCompletedTasks++;
+                _context.UpdateUser(User);
                 ButtonText = "Победа!!!!!";
+            }
             else
                 ButtonText = "Поражение!!!!!";
             ButtonVisible = true;
@@ -43,6 +48,7 @@ namespace Forward4.ViewModel
 
         private void Init()
         {
+            User = _context.GetUser();
             ButtonVisible = false;
             TaskComplete task = _context.GetTaskComplete(TaskNumber);
             Text = task.Sentence;

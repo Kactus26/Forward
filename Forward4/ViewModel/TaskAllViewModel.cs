@@ -20,7 +20,7 @@ namespace Forward4.ViewModel
         public bool secondTask = false;
         [ObservableProperty]
         public bool thirdTask = false;
-
+        private User User { get; set; }
 
         [ObservableProperty]
         private string text;
@@ -36,7 +36,7 @@ namespace Forward4.ViewModel
         private string CorrectAnswear { get; set; }
 
         [RelayCommand]
-        public async void Return()
+        public async Task Return()
         {
             Iter++;
             SelectedAnswear = null;
@@ -46,12 +46,16 @@ namespace Forward4.ViewModel
         }
 
         [RelayCommand]
-        public async void NewAnswear()
+        public async Task NewAnswear()
         {
             if (SelectedAnswear == null)
                 return;
             if (SelectedAnswear == CorrectAnswear)
+            {
                 ButtonText = "Победа!!!!!";
+                User.SuccessfulCompletedTasks++;
+                _context.UpdateUser(User);
+            }
             else
             {
                 ButtonText = "Поражение!!!!!";
@@ -59,8 +63,6 @@ namespace Forward4.ViewModel
             }
             ButtonVisible = true;
         }
-
-
 
 
 
@@ -85,7 +87,7 @@ namespace Forward4.ViewModel
         }
 
         [RelayCommand]
-        public async void Check()
+        public async Task Check()
         {
             Text2 = Text2.Trim();
             if (ButtonText2 == "Вы великолепны!")
@@ -98,12 +100,16 @@ namespace Forward4.ViewModel
             }
 
             if (Text2 == Correct)
+            {
+                User.SuccessfulCompletedTasks++;
+                _context.UpdateUser(User);
                 ButtonText2 = "Вы великолепны!";
+            }
             else
             {
                 Text2 = "";
                 ButtonText2 = "Что-то не то...";
-                word = null;
+                Word = null;
             }
         }
 
@@ -126,9 +132,8 @@ namespace Forward4.ViewModel
         public int TaskNumber3 { get; set; } = 1;
 
         [RelayCommand]
-        public async void Check2()
-        {
-            if (FirstCollection.Count == 0 || Mistakes == 3)
+        public async Task Check2(){
+            if (Mistakes == 3)
             {
                 await NavigationService.GetNavigation2().PopAsync();
             }
@@ -156,6 +161,8 @@ namespace Forward4.ViewModel
         {
             if (FirstCollection.Count == 1)
             {
+                User.SuccessfulCompletedTasks++;
+                _context.UpdateUser(User);
                 Text3 = "Победа;)";
                 Iter++;
                 ThirdTask = false;
