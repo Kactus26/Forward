@@ -32,11 +32,6 @@ namespace Forward4
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-/*            var serviceProvider = builder.Services.BuildServiceProvider();
-
-            var dataContext = serviceProvider.GetRequiredService<DataContext>();
-
-            Singletone.AddContext(dataContext);*/
 
             return builder.Build();
         }

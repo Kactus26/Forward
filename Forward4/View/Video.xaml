@@ -8,7 +8,7 @@
              Title="Video">
     <ScrollView>
         <VerticalStackLayout>
-            <Label Text="{Binding LessonName}" Padding="20,10,20,0" FontFamily="Montserrat" FontSize="35" HorizontalOptions="Center"/>
+            <Label Text="{Binding LessonName}" Padding="20,20,20,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
             <toolkit:MediaElement HeightRequest="300" ShouldKeepScreenOn="True" Source="{Binding VideoUrl}"/>
             <Label Text="{Binding Text}" FontSize="18" HorizontalOptions="Center" Padding="15,0,15,0"/>
         </VerticalStackLayout>

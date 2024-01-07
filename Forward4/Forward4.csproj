@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Forward4</ApplicationTitle>
+		<ApplicationTitle>Forward</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.forward4</ApplicationId>
@@ -60,6 +60,8 @@
 	  <None Remove="Resources\Fonts\Montserrat-Light.ttf" />
 	  <None Remove="Resources\Fonts\Quicksand-Light.ttf" />
 	  <None Remove="Resources\Fonts\Quicksand-VariableFont_wght.ttf" />
+	  <None Remove="Resources\Images\kurs1.jpg" />
+	  <None Remove="Resources\Images\kurs2.jpg" />
 	  <None Remove="Resources\Images\kurses.png" />
 	  <None Remove="Resources\Images\KursImageGojo.jpg" />
 	  <None Remove="Resources\Images\kursimagemiku.jpg" />
@@ -67,7 +69,11 @@
 	  <None Remove="Resources\Images\tasks.png" />
 	  <None Remove="Resources\Images\vocabulary.png" />
 	  <None Remove="Resources\Images\羽生まゐご「オノマトペ」feat.りりあ。.mp4" />
-	  <None Remove="Resources\Raw\test.mp4" />
+	  <None Remove="Resources\Raw\kurs1-1.mp4" />
+	  <None Remove="Resources\Raw\kurs1-2.mp4" />
+	  <None Remove="Resources\Raw\kurs1-3.mp4" />
+	  <None Remove="Resources\Raw\kurs2-1.mp4" />
+	  <None Remove="Resources\Raw\kurs2-2.mp4" />
 	</ItemGroup>
 
 	<ItemGroup>

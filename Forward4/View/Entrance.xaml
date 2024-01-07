@@ -21,7 +21,7 @@
             <RowDefinition Height="1.1*"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="1" Source="logo.png"/>
+        <Image Grid.Row="1" Source="logo1.png"/>
 
         <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" FontSize="82" FontFamily="Quicksand" TextColor="White" Text="Forward"/>
         <Label Grid.Row="5" Text="Добро пожаловать!" HorizontalOptions="Center" VerticalOptions="Center"  FontFamily="Montserrat" FontSize="29" TextColor="White"/>

@@ -14,7 +14,7 @@
             <RowDefinition Height="0.9*"/>
         </Grid.RowDefinitions>
 
-        <Image Source="logo.png"/>
+        <Image Source="logo1.png"/>
 
         <Label FontFamily="Montserrat" FontSize="26" Text="Имя" Margin="40,0,0,0" Grid.Row="1"/>
         <Border Grid.Row="1" Margin="25, 48" Stroke="#FF7B14" StrokeThickness="2" Background="#262521">
