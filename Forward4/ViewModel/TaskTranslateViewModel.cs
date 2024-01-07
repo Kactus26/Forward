@@ -19,13 +19,15 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public string text = "";
         [ObservableProperty]
+        public int mistakes;
+        [ObservableProperty]
         public TranslationWords word;
         [ObservableProperty]
         public List<TranslationWords> words;
         private string Correct {  get; set; }
         private int Task { get; set; } = 1;
         private User User { get; set; }
-
+        
 
         [RelayCommand]
         public void SelectionChanged()
@@ -49,8 +51,18 @@ namespace Forward4.ViewModel
                 ButtonText = "Вы великолепны!";
             else
             {
+                if(Mistakes == 3) 
+                {
+                    User.WrongCompletedTasks++;
+                    _context.UpdateUser(User);
+                    await NavigationService.GetNavigation2().PopAsync();
+                }
+                Mistakes++;
                 Text = "";
-                ButtonText = "Что-то не то...";
+                if (Mistakes == 3)
+                    ButtonText = "Вы проиграли(";
+                else
+                    ButtonText = "Ошибка!";
             }
         }
 

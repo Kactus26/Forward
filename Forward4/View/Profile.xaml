@@ -39,13 +39,18 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="1">
-            <Label Text="Сохранено курсов" FontFamily="Montserrat" FontSize="25" Grid.Row="1" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding KursCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" Grid.Row="2" HorizontalTextAlignment="Center"/>
+            <Label Text="Сохранено курсов" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding KursCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-            <Label Text="Выполнено заданий" FontFamily="Montserrat" HorizontalTextAlignment="Center" FontSize="25" Grid.Row="1" Grid.Column="1"/>
-            <Label Text="{Binding SuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center"/>
+            <Label Text="Выполнено заданий" FontFamily="Montserrat" HorizontalTextAlignment="Center" FontSize="25"/>
+            <Label Text="{Binding SuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
         </VerticalStackLayout>
-        
+
+        <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
+            <Label Text="Неудачных попыток решения" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding UnsuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="25" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+
     </Grid>
 </ContentPage>

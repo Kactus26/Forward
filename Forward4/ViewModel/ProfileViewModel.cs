@@ -18,6 +18,8 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public int successfulTasksCount;
         [ObservableProperty]
+        public int unsuccessfulTasksCount;
+        [ObservableProperty]
         public string userName;
 
         public void Init()
@@ -26,6 +28,7 @@ namespace Forward4.ViewModel
             UserName = user.Name;
             SuccessfulTasksCount = user.SuccessfulCompletedTasks;
             KursCount = user.UserKurses.Count;
+            UnsuccessfulTasksCount = user.WrongCompletedTasks;
         }
 
         private DataContext _context;

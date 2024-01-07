@@ -31,6 +31,10 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="{Binding ButtonText}" Command="{Binding CheckCommand}" TextColor="White" FontSize="28" BackgroundColor="Transparent" BorderColor="#00C19C" FontFamily="Montserrat" BorderWidth="2" Margin="40,50,40,10"/>
+        <Button Text="{Binding ButtonText}" Command="{Binding CheckCommand}" TextColor="White" FontSize="28" BackgroundColor="Transparent" BorderColor="#00C19C" FontFamily="Montserrat" BorderWidth="2" Margin="40,30,40,10"/>
+        <HorizontalStackLayout Margin="0,5,0,0" HorizontalOptions="Center">
+            <Label Text="{Binding Mistakes}" TextColor="Red" FontSize="25"/>
+            <Label Text="/3" TextColor="Red" FontSize="25"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -36,7 +36,7 @@ namespace Forward4.ViewModel
         private string CorrectAnswear { get; set; }
 
         [RelayCommand]
-        public async Task Return()
+        public async void Return()
         {
             Iter++;
             SelectedAnswear = null;
@@ -46,7 +46,7 @@ namespace Forward4.ViewModel
         }
 
         [RelayCommand]
-        public async Task NewAnswear()
+        public async void NewAnswear()
         {
             if (SelectedAnswear == null)
                 return;
@@ -199,6 +199,7 @@ namespace Forward4.ViewModel
 
         private void Init()
         {
+            User = _context.GetUser();
             Random rnd = new Random();
             int choseTask = rnd.Next(1,4);
             if(choseTask == 1)
