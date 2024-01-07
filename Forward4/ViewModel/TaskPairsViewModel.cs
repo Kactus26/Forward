@@ -35,6 +35,8 @@ namespace Forward4.ViewModel
             }
             if (Mistakes == 3)
             {
+                User.WrongCompletedTasks++;
+                _context.UpdateUser(User);
                 await NavigationService.GetNavigation2().PopAsync();
             }
             if (English == null || Russian == null)
@@ -50,9 +52,10 @@ namespace Forward4.ViewModel
             else if (English.Word == Correct.EWord5 && Russian.Word == Correct.RWord5)
                 CorrectAnswer();
             else
-            {   if (Mistakes == 2)
-                    Text = "Вы проиграли(((";
+            {
                 Mistakes++;
+                if (Mistakes == 3)
+                    Text = "Вы проиграли(((";
             }
         }
 

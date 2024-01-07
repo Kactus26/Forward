@@ -58,6 +58,8 @@ namespace Forward4.ViewModel
             }
             else
             {
+                User.WrongCompletedTasks++;
+                _context.UpdateUser(User);
                 ButtonText = "Поражение!!!!!";
                 await NavigationService.GetNavigation2().PopAsync();
             }
@@ -75,9 +77,12 @@ namespace Forward4.ViewModel
         [ObservableProperty]
         public TranslationWords word;
         [ObservableProperty]
+        public int mistakes2;
+        [ObservableProperty]
         public List<TranslationWords> words;
         private string Correct { get; set; }
         private int TaskNumber2 { get; set; } = 1;
+        
 
         [RelayCommand]
         public void SelectionChanged()
@@ -107,9 +112,19 @@ namespace Forward4.ViewModel
             }
             else
             {
+                if (Mistakes2 == 3)
+                {
+                    User.WrongCompletedTasks++;
+                    _context.UpdateUser(User);
+                    await NavigationService.GetNavigation2().PopAsync();
+                }
+                Mistakes2++;
                 Text2 = "";
-                ButtonText2 = "Что-то не то...";
-                Word = null;
+                Word = new TranslationWords();
+                if (Mistakes2 == 3)
+                    ButtonText2 = "Вы проиграли(";
+                else
+                    ButtonText2 = "Ошибка!";
             }
         }
 
@@ -151,9 +166,13 @@ namespace Forward4.ViewModel
                 CorrectAnswer();
             else
             {
-                if (Mistakes == 2)
-                    Text3 = "Вы проиграли(((";
                 Mistakes++;
+                if (Mistakes == 3)
+                {
+                    User.WrongCompletedTasks++;
+                    _context.UpdateUser(User);
+                    Text3 = "Вы проиграли(((";
+                }
             }
         }
 
@@ -219,6 +238,7 @@ namespace Forward4.ViewModel
                 Words = task.Words;
                 Correct = task.CorrectSentance;
                 ButtonText2 = "Проверить";
+                Mistakes2 = 0;
             }
             else
             {

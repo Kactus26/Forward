@@ -42,7 +42,11 @@ namespace Forward4.ViewModel
                 ButtonText = "Победа!!!!!";
             }
             else
+            {
+                User.WrongCompletedTasks++;
+                _context.UpdateUser(User);
                 ButtonText = "Поражение!!!!!";
+            }
             ButtonVisible = true;
         }
 

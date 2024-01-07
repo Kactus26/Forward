@@ -41,22 +41,23 @@ namespace Forward4.ViewModel
         {
             Text = Text.Trim();
             if (ButtonText == "Вы великолепны!")
+                await NavigationService.GetNavigation2().PopAsync();
+
+            if (Text == Correct)
             {
                 User.SuccessfulCompletedTasks++;
                 _context.UpdateUser(User);
-                await NavigationService.GetNavigation2().PopAsync();
-            }
-
-            if (Text == Correct)
                 ButtonText = "Вы великолепны!";
+            }
             else
             {
-                if(Mistakes == 3) 
+                if (Mistakes == 3)
                 {
                     User.WrongCompletedTasks++;
                     _context.UpdateUser(User);
                     await NavigationService.GetNavigation2().PopAsync();
                 }
+                Word = new TranslationWords();
                 Mistakes++;
                 Text = "";
                 if (Mistakes == 3)
