@@ -39,7 +39,7 @@ namespace Forward4.Data
                 TaskTranslate taskTranslate = new TaskTranslate { Sentance = "Уберите от меня этого разработчика", CorrectSentance = "Get this developer away from me" };
                 _context.Insert(taskTranslate);
 
-                List<TranslationWords> words = new List<TranslationWords> { 
+                List<TranslationWords> words = new List<TranslationWords> {
                     new TranslationWords { Word = "Get", TaskId = taskTranslate.Id },
                     new TranslationWords { Word = "from", TaskId = taskTranslate.Id },
                     new TranslationWords { Word = "me", TaskId = taskTranslate.Id },
@@ -51,13 +51,13 @@ namespace Forward4.Data
                 taskTranslate.Words = words;
                 _context.UpdateWithChildren(taskTranslate);
 
-                TaskComplete taskComplete = new TaskComplete { Sentence = "He was ___ man ever existed", Answear1 = "The strongest", Answear2 = "More stronger", Answear3 = "Most strongest", Answear4 = "The stronger", CorrectAnswear = "The strongest"};
+                TaskComplete taskComplete = new TaskComplete { Sentence = "He was ___ man ever existed", Answear1 = "The strongest", Answear2 = "More stronger", Answear3 = "Most strongest", Answear4 = "The stronger", CorrectAnswear = "The strongest" };
                 _context.Insert(taskComplete);
 
                 TaskPairs taskPairs = new TaskPairs();
                 _context.Insert(taskPairs);
 
-                TaskPairsCorrect wordsCorrect = new TaskPairsCorrect { EWord1 = "Cat", RWord1 = "Кот", EWord2 = "Dog", RWord2 = "Собака", EWord3 = "Mouse", RWord3 = "Мышь", EWord4 = "Horse", RWord4 = "Лошадь", EWord5 = "Rabbit", RWord5 = "Заяц", TaskId = taskPairs.Id};
+                TaskPairsCorrect wordsCorrect = new TaskPairsCorrect { EWord1 = "Cat", RWord1 = "Кот", EWord2 = "Dog", RWord2 = "Собака", EWord3 = "Mouse", RWord3 = "Мышь", EWord4 = "Horse", RWord4 = "Лошадь", EWord5 = "Rabbit", RWord5 = "Заяц", TaskId = taskPairs.Id };
                 _context.Insert(wordsCorrect);
                 taskPairs.CorrectCombination = new List<TaskPairsCorrect> { wordsCorrect };
 
@@ -86,7 +86,7 @@ namespace Forward4.Data
                 };
                 _context.InsertAll(taskPairsRussian);
                 taskPairs.RWords = taskPairsRussian;
-                _context.UpdateWithChildren(taskPairs);               
+                _context.UpdateWithChildren(taskPairs);
 
                 User admin = new User { Name = "Kactus", Password = "111", ActiveKurseId = 1 };
                 _context.Insert(admin);
@@ -98,14 +98,14 @@ namespace Forward4.Data
                 Vocabulary second = new Vocabulary { FirstWord = "Cat", SecondWord = "Кот", UserId = admin.Id };
                 _context.Insert(first);
                 _context.Insert(second);
-                Lessons lesson1 = new Lessons { Name = "Основы словарного запаса: Начальные слова и фразы", VideoUrl = "kurs1-1.mp4", Description = "Стартовый словарь", Text = "Добро пожаловать в наш урок! Сегодня мы начнем с самых основ. Вы изучите простые и полезные слова, которые помогут вам в повседневном общении на английском языке.\n Давайте начнем с приветствий, цифр, основных предметов и фраз для общения. Этот стартовый словарь станет вашим надежным партнером в первых шагах в изучении английского!", KursId = gojoKurse.Id };
-                Lessons lesson2 = new Lessons { Name = "Введение в Язык: Первые шаги в Английском", VideoUrl = "kurs1-2.mp4", Description = "Языковое введение", Text= "Приветствуем вас на первом этапе вашего языкового путешествия! В этом уроке мы обзорно поговорим о базовых навыках, которые вам пригодятся в изучении английского языка.\n Мы рассмотрим основные грамматические правила, простые фразы для общения и узнаем, как правильно строить предложения. Готовы начать первые шаги в английском?", KursId = gojoKurse.Id };
-                Lessons lesson25 = new Lessons { Name = "Слова для Новичков: Основы Английской Лексики", VideoUrl = "kurs1-3.mp4", Description = "Основы лексики", Text= "Давайте погрузимся в мир основ английской лексики! В этом уроке вы узнаете простые, но важные слова и выражения, которые помогут вам в различных ситуациях.\n Мы познакомимся с повседневными темами, такими как семья, дом, работа, и научимся описывать базовые предметы. Эти основы лексики станут крепким фундаментом для вашего дальнейшего изучения английского языка!", KursId = gojoKurse.Id };
+                Lessons lesson1 = new Lessons { Name = "Основы словарного запаса: Начальные слова и фразы", VideoUrl = "kurs1-1.mp4", Description = "Стартовый словарь", Text = "Добро пожаловать в наш урок! Сегодня мы начнем с самых основ. Вы изучите простые и полезные слова, которые помогут вам в повседневном общении на английском языке.\n\n Давайте начнем с приветствий, цифр, основных предметов и фраз для общения. Этот стартовый словарь станет вашим надежным партнером в первых шагах в изучении английского!", KursId = gojoKurse.Id };
+                Lessons lesson2 = new Lessons { Name = "Введение в Язык: Первые шаги в английском", VideoUrl = "kurs1-2.mp4", Description = "Языковое введение", Text = "Приветствуем вас на первом этапе вашего языкового путешествия! В этом уроке мы обзорно поговорим о базовых навыках, которые вам пригодятся в изучении английского языка.\n\n Мы рассмотрим основные грамматические правила, простые фразы для общения и узнаем, как правильно строить предложения. Готовы начать первые шаги в английском?", KursId = gojoKurse.Id };
+                Lessons lesson25 = new Lessons { Name = "Слова для Новичков: Основы английской лексики", VideoUrl = "kurs1-3.mp4", Description = "Основы лексики", Text = "Давайте погрузимся в мир основ английской лексики! В этом уроке вы узнаете простые, но важные слова и выражения, которые помогут вам в различных ситуациях.\n\n Мы познакомимся с повседневными темами, такими как семья, дом, работа, и научимся описывать базовые предметы. Эти основы лексики станут крепким фундаментом для вашего дальнейшего изучения английского языка!", KursId = gojoKurse.Id };
                 _context.Insert(lesson1);
                 _context.Insert(lesson2);
                 _context.Insert(lesson25);
-                Lessons lesson3 = new Lessons { Name = "Путь к языковой грамотности", VideoUrl = "kurs2-1.mp4", Description = "Тайны изучения языка", KursId = mikuKurse.Id, Text= "Добро пожаловать на урок \"Путь к языковой грамотности\"! Здесь мы исследуем тайны успешного изучения английского языка.\n Вы узнаете, как построить правильные образовательные привычки, разработать мотивационный план и преодолеть возможные трудности в процессе обучения.\n Давайте вместе создадим стратегию, которая сделает ваше изучение английского удовлетворительным и результативным!" };
-                Lessons lesson4 = new Lessons { Name = "Эффективные стратегии обучения", VideoUrl = "kurs2-2.mp4", Description = "Cтратегии и методы", KursId = mikuKurse.Id, Text= "Добро пожаловать на урок \"Мастерство в изучении английского\"! В этом уроке мы рассмотрим передовые стратегии обучения, которые сделают ваш путь к владению английским языком успешным и увлекательным. Вы узнаете, как эффективно управлять своим временем, применять индивидуальные методы обучения и использовать ресурсы для максимального освоения языка.\n Давайте вместе создадим персональный план обучения для достижения ваших языковых целей!" };
+                Lessons lesson3 = new Lessons { Name = "Путь к языковой грамотности", VideoUrl = "kurs2-1.mp4", Description = "Тайны изучения языка", KursId = mikuKurse.Id, Text = "Добро пожаловать на урок \"Путь к языковой грамотности\"! Здесь мы исследуем тайны успешного изучения английского языка.\n\n Вы узнаете, как построить правильные образовательные привычки, разработать мотивационный план и преодолеть возможные трудности в процессе обучения.\n\n Давайте вместе создадим стратегию, которая сделает ваше изучение английского удовлетворительным и результативным!" };
+                Lessons lesson4 = new Lessons { Name = "Эффективные стратегии обучения", VideoUrl = "kurs2-2.mp4", Description = "Cтратегии и методы", KursId = mikuKurse.Id, Text = "Добро пожаловать на урок \"Мастерство в изучении английского\"! В этом уроке мы рассмотрим передовые стратегии обучения, которые сделают ваш путь к владению английским языком успешным и увлекательным. Вы узнаете, как эффективно управлять своим временем, применять индивидуальные методы обучения и использовать ресурсы для максимального освоения языка.\n\n Давайте вместе создадим персональный план обучения для достижения ваших языковых целей!" };
                 _context.Insert(lesson3);
                 _context.Insert(lesson4);
                 gojoKurse.Lessons = new List<Lessons> { lesson1, lesson2, lesson25 };
@@ -114,6 +114,12 @@ namespace Forward4.Data
                 admin.UserVocabulary = new List<Vocabulary> { first, second };
                 _context.UpdateWithChildren(admin);
             }
+        }
+
+        public void DeleteActiveUser()
+        {
+            Active user = _context.Table<Active>().FirstOrDefault();
+            _context.Delete(user);
         }
 
         public TaskTranslate GetTaskTranslate(int TaskNumber)

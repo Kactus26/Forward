@@ -28,7 +28,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <VerticalStackLayout Grid.ColumnSpan="2">        
+        <VerticalStackLayout Grid.ColumnSpan="2">
             <Border Margin="15,15,15,0" Grid.ColumnSpan="2" Stroke="Transparent">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"/>
@@ -50,7 +50,10 @@
         <VerticalStackLayout Margin="0,-35,0,0" Grid.Row="2" Grid.ColumnSpan="2">
             <Label Text="Неудачных попыток решения" Margin="20,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
             <Label Text="{Binding UnsuccessfulTasksCount}" Margin="0,13,0,0" FontFamily="Montserrat" FontSize="23" HorizontalTextAlignment="Center"/>
-            <Button Command="{Binding UpdateCommand}" Margin="0,20,0,0" WidthRequest="200" Text="Обновить" TextColor="White" FontSize="23" BackgroundColor="Transparent" BorderColor="LightBlue" FontFamily="Montserrat" BorderWidth="2"/>
+            <HorizontalStackLayout Margin="0,15,0,0">
+                <Button Command="{Binding UpdateCommand}" Margin="10,20,10,0" WidthRequest="190" Text="Обновить" TextColor="White" FontSize="23" BackgroundColor="Transparent" BorderColor="LightBlue" FontFamily="Montserrat" BorderWidth="2"/>
+                <Button Command="{Binding ExitCommand}" Margin="0,20,0,0" WidthRequest="190" Text="Выйти" TextColor="White" FontSize="23" BackgroundColor="Transparent" BorderColor="#FF7B14" FontFamily="Montserrat" BorderWidth="2"/>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

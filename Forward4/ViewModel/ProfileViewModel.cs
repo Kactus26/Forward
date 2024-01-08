@@ -29,6 +29,13 @@ namespace Forward4.ViewModel
             Init();
         }
 
+        [RelayCommand]
+        public async Task Exit()
+        {
+            _context.DeleteActiveUser();
+            Application.Current.Quit();
+        }
+
         public void Init()
         {
             User user = _context.GetUser();
