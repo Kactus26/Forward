@@ -8,4 +8,7 @@ The third tab is the "Dictionary." Here, users can add and delete words and phra
 
 The last tab is the "Profile" tab. It displays the user's name, as well as statistics on completed tasks and courses taken.
 
-![image](https://github.com/Kactus26/Forward/assets/143936467/050ebc0b-154f-49d1-abe2-7515ca5635c0)
+![image](https://github.com/Kactus26/Forward/assets/143936467/b90cb415-7e7c-4f97-8ee6-ed89c30f2ffe)
+![image](https://github.com/Kactus26/Forward/assets/143936467/67fbdd69-254b-4ccf-a8d9-de6a0da3ae9f)
+![image](https://github.com/Kactus26/Forward/assets/143936467/caf3335e-01c4-4372-83a9-6e3772c501cf)
+![image](https://github.com/Kactus26/Forward/assets/143936467/5dac9eec-857e-4086-8fed-9767b9bda603)
